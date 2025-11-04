@@ -26,6 +26,7 @@ class CustomerControllerTest {
     private ICustomerService customerService;
 
     @InjectMocks
+
     private CustomerController customerController;
 
     @Autowired
