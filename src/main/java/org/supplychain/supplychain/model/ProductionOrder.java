@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.supplychain.supplychain.enums.Priority;
 import org.supplychain.supplychain.enums.ProductionOrderStatus;
-
 import java.time.LocalDate;
 
 @Entity
