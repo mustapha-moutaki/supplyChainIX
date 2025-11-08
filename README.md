@@ -100,83 +100,178 @@ Manage customers, sales orders, and deliveries.
 ```
 Directory structure:
 └── mustapha-moutaki-supplychainix/
-├── docker-compose.yml
-├── Dockerfile
-├── mvnw.cmd
-├── pom.xml
-├── docker/
-│   └── README.md
-├── docs/
-│   └── README.md
-├── src/
-│   └── main/
-│       └── java/
-│           └── org/
-│               └── supplychain/
-│                   └── supplychain/
-│                       ├── config/
-│                       │   ├── DataInitializer.java
-│                       │   ├── JpaAuditingConfig.java
-│                       │   └── SwaggerConfig.java
-│                       ├── controller/
-│                       │   ├── approvisionnement/
-│                       │   │   ├── OrderController.java
-│                       │   │   ├── RawMaterialController.java
-│                       │   │   └── SupplierController.java
-│                       │   ├── modelDelivery/
-│                       │   │   └── CustomerController.java
-│                       │   └── Production/
-│                       │       ├── ProductController.java
-│                       │       └── ProductionOrderController.java
-│                       ├── dto/
-│                       │   ├── README.md
-│                       │   ├── BOM/
-│                       │   │   └── BillOfMaterialDTO.java
-│                       │   ├── modelDelivery/
-│                       │   │   └── CustomerDto.java
-│                       │   ├── order/
-│                       │   │   └── OrderDTO.java
-│                       │   ├── product/
-│                       │   │   └── ProductDTO.java
-│                       │   ├── productionorder/
-│                       │   │   └── ProductionOrderDTO.java
-│                       │   ├── rawmaterial/
-│                       │   │   ├── README.md
-│                       │   │   ├── ErrorResponse.java
-│                       │   │   ├── PageResponseDTO.java
-│                       │   │   ├── RawMaterialRequestDTO.java
-│                       │   │   ├── RawMaterialResponseDTO.java
-│                       │   │   ├── RawMaterialSummaryDTO.java
-│                       │   │   └── SupplierSummaryDTO.java
-│                       │   ├── supplier/
-│                       │   │   └── SupplierDTO.java
-│                       │   └── supplyorder/
-│                       │       └── README.md
-│                       ├── enums/
-│                       │   ├── README.md
-│                       │   ├── DeliveryStatus.java
-│                       │   ├── OrderStatus.java
-│                       │   ├── Priority.java
-│                       │   ├── ProductionOrderStatus.java
-│                       │   ├── Role.java
-│                       │   └── SupplyOrderStatus.java
-│                       └── model/
-│                           ├── BaseEntity.java
-│                           ├── BillOfMaterial.java
-│                           ├── Customer.java
-│                           ├── Delivery.java
-│                           ├── Order.java
-│                           ├── Product.java
-│                           ├── ProductionOrder.java
-│                           ├── ProductOrder.java
-│                           ├── RawMaterial.java
-│                           ├── Supplier.java
-│                           ├── SupplyOrder.java
-│                           ├── SupplyOrderLine.java
-│                           └── User.java
-└── .mvn/
-└── wrapper/
-└── maven-wrapper.properties
+    ├── README.md
+    ├── docker-compose.yml
+    ├── Dockerfile
+    ├── mvnw
+    ├── mvnw.cmd
+    ├── pom.xml
+    ├── docker/
+    │   └── README.md
+    ├── docs/
+    │   └── README.md
+    ├── src/
+    │   ├── main/
+    │   │   ├── java/
+    │   │   │   └── org/
+    │   │   │       └── supplychain/
+    │   │   │           └── supplychain/
+    │   │   │               ├── SupplychainApplication.java
+    │   │   │               ├── config/
+    │   │   │               │   ├── DataInitializer.java
+    │   │   │               │   ├── JpaAuditingConfig.java
+    │   │   │               │   └── SwaggerConfig.java
+    │   │   │               ├── constants/
+    │   │   │               │   └── supplierConstants/
+    │   │   │               │       ├── ApiConstants.java
+    │   │   │               │       └── OrderContants.java
+    │   │   │               ├── controller/
+    │   │   │               │   ├── approvisionnement/
+    │   │   │               │   │   ├── OrderController.java
+    │   │   │               │   │   ├── RawMaterialController.java
+    │   │   │               │   │   ├── SupplierController.java
+    │   │   │               │   │   └── SupplierOrderController.java
+    │   │   │               │   ├── modelDelivery/
+    │   │   │               │   │   └── CustomerController.java
+    │   │   │               │   └── Production/
+    │   │   │               │       ├── ProductController.java
+    │   │   │               │       └── ProductionOrderController.java
+    │   │   │               ├── dto/
+    │   │   │               │   ├── BOM/
+    │   │   │               │   │   └── BillOfMaterialDTO.java
+    │   │   │               │   ├── modelDelivery/
+    │   │   │               │   │   ├── CustomerDto.java
+    │   │   │               │   │   └── DeliveryDto.java
+    │   │   │               │   ├── order/
+    │   │   │               │   │   └── OrderDTO.java
+    │   │   │               │   ├── product/
+    │   │   │               │   │   └── ProductDTO.java
+    │   │   │               │   ├── productionorder/
+    │   │   │               │   │   └── ProductionOrderDTO.java
+    │   │   │               │   ├── rawmaterial/
+    │   │   │               │   │   ├── README.md
+    │   │   │               │   │   ├── ErrorResponse.java
+    │   │   │               │   │   ├── PageResponseDTO.java
+    │   │   │               │   │   ├── RawMaterialRequestDTO.java
+    │   │   │               │   │   ├── RawMaterialResponseDTO.java
+    │   │   │               │   │   ├── RawMaterialSummaryDTO.java
+    │   │   │               │   │   └── SupplierSummaryDTO.java
+    │   │   │               │   ├── supplier/
+    │   │   │               │   │   └── SupplierDTO.java
+    │   │   │               │   └── supplyOrder/
+    │   │   │               │       ├── SupplyOrderDTO.java
+    │   │   │               │       └── SupplyOrderLineDTO.java
+    │   │   │               ├── enums/
+    │   │   │               │   ├── README.md
+    │   │   │               │   ├── DeliveryStatus.java
+    │   │   │               │   ├── OrderStatus.java
+    │   │   │               │   ├── Priority.java
+    │   │   │               │   ├── ProductionOrderStatus.java
+    │   │   │               │   ├── Role.java
+    │   │   │               │   └── SupplyOrderStatus.java
+    │   │   │               ├── exception/
+    │   │   │               │   ├── DuplicateResourceException.java
+    │   │   │               │   ├── GlobalExceptionHandler.java
+    │   │   │               │   ├── ResourceInUseException.java
+    │   │   │               │   └── ResourceNotFoundException.java
+    │   │   │               ├── mapper/
+    │   │   │               │   ├── README.md
+    │   │   │               │   ├── RawMaterialMapper.java
+    │   │   │               │   ├── modelDelivery/
+    │   │   │               │   │   ├── CustomerMapper.java
+    │   │   │               │   │   └── DeliveryMapper.java
+    │   │   │               │   ├── modelSupplier/
+    │   │   │               │   │   ├── OrderMapper.java
+    │   │   │               │   │   ├── SupplierMapper.java
+    │   │   │               │   │   ├── SupplierOrderMapper.java
+    │   │   │               │   │   └── SupplyOrderLineMapper.java
+    │   │   │               │   └── Production/
+    │   │   │               │       ├── BillOfMaterialMapper.java
+    │   │   │               │       ├── ProductionOrderMapper.java
+    │   │   │               │       └── ProductMapper.java
+    │   │   │               ├── model/
+    │   │   │               │   ├── BaseEntity.java
+    │   │   │               │   ├── BillOfMaterial.java
+    │   │   │               │   ├── Customer.java
+    │   │   │               │   ├── Delivery.java
+    │   │   │               │   ├── Order.java
+    │   │   │               │   ├── Product.java
+    │   │   │               │   ├── ProductionOrder.java
+    │   │   │               │   ├── ProductOrder.java
+    │   │   │               │   ├── RawMaterial.java
+    │   │   │               │   ├── Supplier.java
+    │   │   │               │   ├── SupplyOrder.java
+    │   │   │               │   ├── SupplyOrderLine.java
+    │   │   │               │   └── User.java
+    │   │   │               ├── repository/
+    │   │   │               │   ├── approvisionnement/
+    │   │   │               │   │   ├── OrderRepository.java
+    │   │   │               │   │   ├── RawMaterialRepository.java
+    │   │   │               │   │   ├── SupplierOrderRepository.java
+    │   │   │               │   │   ├── SupplierRepository.java
+    │   │   │               │   │   └── SupplyOrderLineRepository.java
+    │   │   │               │   ├── modelDelivery/
+    │   │   │               │   │   ├── CustomerRepository.java
+    │   │   │               │   │   └── DeliveryRepository.java
+    │   │   │               │   └── Production/
+    │   │   │               │       ├── BillOfMaterialRepository.java
+    │   │   │               │       ├── ProductionOrderRepository.java
+    │   │   │               │       └── ProductRepository.java
+    │   │   │               ├── response/
+    │   │   │               │   ├── ErrorResponse.java
+    │   │   │               │   └── SuccessResponse.java
+    │   │   │               └── service/
+    │   │   │                   ├── approvisionnement/
+    │   │   │                   │   ├── RawMaterialService.java
+    │   │   │                   │   └── RawMaterialServiceImpl.java
+    │   │   │                   ├── modelDelivery/
+    │   │   │                   │   ├── impl/
+    │   │   │                   │   │   ├── CustomerServiceImpl.java
+    │   │   │                   │   │   └── DeliveryServiceImpl.java
+    │   │   │                   │   └── interfaces/
+    │   │   │                   │       ├── ICustomerService.java
+    │   │   │                   │       └── IDeliveryService.java
+    │   │   │                   ├── modelSupplier/
+    │   │   │                   │   ├── OrderServiec.java
+    │   │   │                   │   ├── SupplierOrderService.java
+    │   │   │                   │   ├── SupplierService.java
+    │   │   │                   │   ├── SupplyOrderLineService.java
+    │   │   │                   │   └── impl/
+    │   │   │                   │       ├── OrderServiceImpl.java
+    │   │   │                   │       ├── SupplierServiceImpl.java
+    │   │   │                   │       └── SupplyOrderServiceImpl.java
+    │   │   │                   └── Production/
+    │   │   │                       ├── Product/
+    │   │   │                       │   ├── ProductService.java
+    │   │   │                       │   └── ProductServiceImpl.java
+    │   │   │                       └── ProductionOrder/
+    │   │   │                           ├── ProductionOrderService.java
+    │   │   │                           └── ProductionOrderServiceImpl.java
+    │   │   └── resources/
+    │   │       ├── application.yml
+    │   │       └── db/
+    │   │           └── changelog/
+    │   │               ├── README.md
+    │   │               ├── db.changelog-master.yaml
+    │   │               └── changes/
+    │   │                   └── README.md
+    │   └── test/
+    │       └── java/
+    │           └── org/
+    │               └── supplychain/
+    │                   └── supplychain/
+    │                       ├── SupplychainApplicationTests.java
+    │                       ├── controller/
+    │                       │   └── modelDelivery/
+    │                       │       └── CustomerControllerTest.java
+    │                       └── service/
+    │                           └── modelDelivery/
+    │                               └── impl/
+    │                                   └── CustomerServiceImplTest.java
+    └── .mvn/
+        └── wrapper/
+            └── maven-wrapper.properties
+
 ```
 
 
@@ -233,5 +328,11 @@ Dashboard with real-time KPIs (using React + Chart.js)
 
 AI-based demand forecasting (bonus)
 
+# UML Diagrams:
+
+## Class diagram
 ![Architecture Diagram](/UML/supply-chaine-Class-Diagram.webp)
+
+
+## Use-Case diagram
 ![Architecture Diagram](/UML/supply-chaine-UseCase.webp)
