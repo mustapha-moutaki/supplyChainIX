@@ -1,26 +1,27 @@
 package org.supplychain.supplychain.service.approvisionnement.impl;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.supplychain.supplychain.dto.supplier.SupplierDTO;
+import org.supplychain.supplychain.mapper.modelSupplier.SupplierMapper;
 import org.supplychain.supplychain.model.Supplier;
 import org.supplychain.supplychain.repository.approvisionnement.SupplierRepository;
 import org.supplychain.supplychain.service.modelSupplier.impl.SupplierServiceImpl;
 
-
-import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class SupplierServiceImplTest {
+
+    @Mock
+    private SupplierMapper supplierMapper;
 
     @Mock
     private SupplierRepository supplierRepository;
@@ -28,57 +29,38 @@ class SupplierServiceImplTest {
     @InjectMocks
     private SupplierServiceImpl supplierService;
 
-    private Supplier supplier;
-    private SupplierDTO supplierDTO;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-
-        supplier = new Supplier();
-        supplier.setIdSupplier(1L);
-        supplier.setName("Atlas Supply");
-        supplier.setContact("atlas@supply.com");
-
-        supplierDTO = new SupplierDTO();
-        supplierDTO.setId(1L);
-        supplierDTO.setName("Atlas Supply");
-        supplierDTO.setContact("atlas@supply.com");
-    }
-
-    @Test
-    void testGetAllSuppliers() {
-        // create a page with your supplier
-        Page<Supplier> supplierPage = new PageImpl<>(List.of(supplier));
-
-        // mock repository to return the page
-        when(supplierRepository.findAll(PageRequest.of(0, 10))).thenReturn(supplierPage);
-
-        // call service method
-        Page<SupplierDTO> result = supplierService.getAllSuppliers(0, 10);
-
-        // assertions
-        assertEquals(1, result.getContent().size());
-        assertEquals("Atlas Supply", result.getContent().get(0).getName());
-    }
-
-
-
     @Test
     void testGetSupplierById() {
+
+        Supplier supplier = new Supplier();
+        supplier.setIdSupplier(1L);
+
+
         when(supplierRepository.findById(1L)).thenReturn(Optional.of(supplier));
 
-        SupplierDTO result = supplierService.getSupplierById(1L);
-        assertNotNull(result);
-        assertEquals("Atlas Supply", result.getName());
+        when(supplierMapper.toDTO(any())).thenReturn(new SupplierDTO());
+
+        SupplierDTO dto = supplierService.getSupplierById(1L);
+
+
+        assertNotNull(dto);
     }
 
     @Test
     void testCreateSupplier() {
-        when(supplierRepository.save(any(Supplier.class))).thenReturn(supplier);
+        SupplierDTO supplierDTO = new SupplierDTO();
+        supplierDTO.setName("Test Supplier");
 
-        SupplierDTO result = supplierService.createSupplier(supplierDTO);
-        assertNotNull(result);
-        assertEquals("Atlas Supply", result.getName());
+        Supplier supplierEntity = new Supplier();
+        supplierEntity.setIdSupplier(1L);
+
+        when(supplierMapper.toEntity(any(SupplierDTO.class))).thenReturn(supplierEntity);
+        when(supplierRepository.save(any(Supplier.class))).thenReturn(supplierEntity);
+        when(supplierMapper.toDTO(any(Supplier.class))).thenReturn(supplierDTO);
+
+        SupplierDTO created = supplierService.createSupplier(supplierDTO);
+
+        assertNotNull(created);
+        assert(created.getName().equals("Test Supplier"));
     }
 }

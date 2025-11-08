@@ -40,10 +40,15 @@ class SupplierControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(supplierController).build();
 
         supplierDTO = new SupplierDTO();
-        supplierDTO.setId(1L);
-        supplierDTO.setName("Atlas Supply");
-        supplierDTO.setContact("atlas@supply.com");
+        supplierDTO.setName("dfgvdv");
+        supplierDTO.setContact("Johndniin Doe");
+        supplierDTO.setEmail("first@12.com");
+        supplierDTO.setPhone("0654123456");
+        supplierDTO.setRating(4.7);
+        supplierDTO.setLeadTime(22);
+        supplierDTO.setMaterialIds(List.of(1L));
     }
+
 
     @Test
     void testGetAllSuppliers() throws Exception {
@@ -54,9 +59,10 @@ class SupplierControllerTest {
         mockMvc.perform(get("/api/suppliers")
                         .param("page", "0")
                         .param("size", "10"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content[0].name").value("Atlas Supply"));
+                .andExpect(status().isOk()) // 200 OK
+                .andExpect(jsonPath("$.content[0].name").value("dfgvdv"));
     }
+
 
 
     @Test
@@ -76,6 +82,9 @@ class SupplierControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(supplierDTO)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Atlas Supply"));
+                .andExpect(jsonPath("$.name").value("dfgvdv"))
+                .andExpect(jsonPath("$.email").value("first@12.com"));
     }
+
+
 }
