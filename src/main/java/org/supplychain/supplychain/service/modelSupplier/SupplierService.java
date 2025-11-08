@@ -12,4 +12,6 @@ public interface SupplierService {
     Page<SupplierDTO> getAllSuppliers(int page, int size);
 
     List<SupplierDTO> searchSupplierByName(String name);
+
+    SupplierDTO getSupplierById(Long id);
 }
