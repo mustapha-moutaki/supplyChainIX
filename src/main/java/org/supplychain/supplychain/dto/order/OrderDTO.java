@@ -3,9 +3,8 @@ package org.supplychain.supplychain.dto.order;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.supplychain.supplychain.dto.modelDelivery.CustomerDto;
-//import org.supplychain.supplychain.dto.delivery.DeliveryDTO;
-//import org.supplychain.supplychain.dto.product.ProductOrderDTO;
+
+import org.supplychain.supplychain.dto.modelDelivery.DeliveryDto;
 import org.supplychain.supplychain.enums.OrderStatus;
 import org.supplychain.supplychain.model.Product;
 
@@ -24,10 +23,10 @@ public class OrderDTO {
 
     private List<Product> productOrders = new ArrayList<>();
 
-    private BigDecimal totalAmount;
+//    private BigDecimal totalAmount;
 
     private OrderStatus status;
 
-//    private DeliveryDTO delivery;
+    private DeliveryDto delivery;
 
 }
