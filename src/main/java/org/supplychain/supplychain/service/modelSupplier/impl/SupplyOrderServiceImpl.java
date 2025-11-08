@@ -1,5 +1,6 @@
 package org.supplychain.supplychain.service.modelSupplier.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.supplychain.supplychain.dto.supplyOrder.SupplyOrderDTO;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class SupplyOrderServiceImpl implements SupplierOrderService {
 
     private final SupplierOrderRepository repository;

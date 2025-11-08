@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderServiec {
                 .orElseThrow(() -> new RuntimeException("Order introuvable"));
 
         existing.setStatus(dto.getStatus());
-        existing.setTotalAmount(dto.getTotalAmount());
+//        existing.setTotalAmount(dto.getTotalAmount());
 
 
         Order saved = orderRepository.save(existing);
