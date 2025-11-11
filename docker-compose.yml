@@ -58,7 +58,7 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-  #  ---------------
+  #  ----------------
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: supplychainx-pgadmin
