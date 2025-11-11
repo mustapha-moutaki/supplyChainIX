@@ -16,6 +16,7 @@ we use testproperty if we use application-test.properties not yml
  */
 //@TestPropertySource(locations = "classpath:application-test.yml")
 //@SpringBootTest
+
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
