@@ -49,7 +49,16 @@ services:
       timeout: 5s
       retries: 3
       start_period: 150s
-
+#---------------------addition
+  Jenkins:
+    image: jenkins/jenkins:lts
+    container_name: supply_Jenkins
+    ports:
+      - "9090:8080" # jenkins works in port 9090
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+#  ---------------
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: supplychainx-pgadmin

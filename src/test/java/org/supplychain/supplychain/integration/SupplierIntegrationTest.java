@@ -9,12 +9,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(properties = "spring.profiles.active=test")
+
 /*
 we use testproperty if we use application-test.properties not yml
  */
 //@TestPropertySource(locations = "classpath:application-test.yml")
 //@SpringBootTest
+@SpringBootTest(properties = "spring.profiles.active=test")
 @AutoConfigureMockMvc
 public class SupplierIntegrationTest {
     @Autowired
@@ -22,7 +23,7 @@ public class SupplierIntegrationTest {
 
     @Test
     void testGetAllSuppliersIntegration() throws Exception {
-        mockMvc.perform(get("/api/suppliers"))
+        mockMvc.perform(get("/api/suppliers")).andDo(result -> System.out.println(result.getResponse()))
                 .andExpect(status().isOk());
     }
 }
