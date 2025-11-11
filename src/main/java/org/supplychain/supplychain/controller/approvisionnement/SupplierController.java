@@ -60,4 +60,11 @@ public class SupplierController {
     public ResponseEntity<List<SupplierDTO>> searchSupplier(@RequestParam String name) {
         return ResponseEntity.ok(supplierService.searchSupplierByName(name));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SupplierDTO> getSupplierById(@PathVariable Long id) {
+        SupplierDTO supplier = supplierService.getSupplierById(id);
+        return ResponseEntity.ok(supplier);
+    }
+
 }
