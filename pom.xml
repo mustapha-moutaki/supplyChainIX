@@ -202,6 +202,81 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+
+
+
+<!--                          jaCoco Configuration-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+
+                <executions>
+
+                    <!-- ────────────────────────────────────────────────── -->
+                    <!-- 1. Prepare Agent - before run tests -->
+                    <!-- ────────────────────────────────────────────────── -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- ────────────────────────────────────────────────── -->
+                    <!-- 2. Report - after test generate rapport html    -->
+                    <!-- ────────────────────────────────────────────────── -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- ────────────────────────────────────────────────── -->
+                    <!-- 3. Check - the minimal average for continues like < 60%  passed -->
+                    <!-- ────────────────────────────────────────────────── -->
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <!-- minimal test avg: 80% -->
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.80</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+
+                </executions>
+
+                <configuration>
+
+                    <excludes>
+                        <!-- avoid config files -->
+                        <exclude>**/config/**</exclude>
+                        <!-- avoid calss entities -->
+                        <exclude>**/entity/**</exclude>
+                        <!--avoid DTO classes -->
+                        <exclude>**/dto/**</exclude>
+                        <!--  Main Application class -->
+                        <exclude>**/*Application.class</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
