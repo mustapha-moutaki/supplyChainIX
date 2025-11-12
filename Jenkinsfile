@@ -134,10 +134,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline finished successfully!'
+            echo '✅ Pipeline finished successfully!'
         }
         failure {
-            echo ' Pipeline failed. Check logs!'
+            echo '❌ Pipeline failed. Check logs!'
         }
     }
 }
