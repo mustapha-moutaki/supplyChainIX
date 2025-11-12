@@ -1,0 +1,1436 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.supplychain:supplychain:jar:0.0.1-SNAPSHOT
+[[1;33mWARNING[m] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-devtools:jar -> duplicate declaration of version (?) @ line 98, column 21
+[[1;33mWARNING[m] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.postgresql:postgresql:jar -> duplicate declaration of version (?) @ line 124, column 21
+[[1;33mWARNING[m] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-compiler-plugin @ line 179, column 21
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36morg.supplychain:supplychain[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding supplychain 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:3.4.1:clean[m [1m(default-clean)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/mustapha/IdeaProjects/SupplyChainX/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.11:prepare-agent[m [1m(prepare-agent)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/home/mustapha/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/home/mustapha/IdeaProjects/SupplyChainX/target/jacoco.exec,excludes=**/config/**:**/entity/**:**/dto/**:**/*Application.class
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 3 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :source
+[[1;34mINFO[m] Compiling 90 source files with javac [debug release 17] to target/classes
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelDelivery/DeliveryMapper.java:[17,14] Unmapped target properties: "createdDate, createdBy, updatedDate, updatedBy".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/Production/ProductionOrderMapper.java:[19,21] Unmapped target property: "endtDate".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/Production/ProductionOrderMapper.java:[23,24] Unmapped target property: "endDate".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/Production/ProductionOrderMapper.java:[31,10] Unmapped target property: "endtDate".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelSupplier/SupplierOrderMapper.java:[12,17] Unmapped target properties: "createdDate, createdBy, updatedDate, updatedBy, idOrder, supplier".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelSupplier/SupplierOrderMapper.java:[13,20] Unmapped target property: "supplierId".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelSupplier/SupplierOrderMapper.java:[16,17] Unmapped target properties: "createdDate, createdBy, updatedDate, updatedBy, idOrder, supplier".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelDelivery/CustomerMapper.java:[13,17] Unmapped target property: "id".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelDelivery/CustomerMapper.java:[15,14] Unmapped target properties: "createdDate, createdBy, updatedDate, updatedBy, idCustomer, orders".
+[[1;33mWARNING[m] /home/mustapha/IdeaProjects/SupplyChainX/src/main/java/org/supplychain/supplychain/mapper/modelSupplier/SupplyOrderLineMapper.java:[20,21] Unmapped target properties: "createdDate, createdBy, updatedDate, updatedBy".
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :dependency
+[[1;34mINFO[m] Compiling 6 source files with javac [debug release 17] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.4:test[m [1m(default-test)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running org.supplychain.supplychain.service.approvisionnement.impl.[1mSupplierServiceImplTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.764 s -- in org.supplychain.supplychain.service.approvisionnement.impl.[1mSupplierServiceImplTest[m
+[[1;34mINFO[m] Running org.supplychain.supplychain.integration.[1mSupplierIntegrationTest[m
+10:37:41.559 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.supplychain.supplychain.integration.SupplierIntegrationTest]: SupplierIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:37:41.763 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.supplychain.supplychain.SupplychainApplication for test class org.supplychain.supplychain.integration.SupplierIntegrationTest
+10:37:42.029 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-11-12T10:37:42.587+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.i.SupplierIntegrationTest          : Starting SupplierIntegrationTest using Java 17.0.16 with PID 51046 (started by mustapha in /home/mustapha/IdeaProjects/SupplyChainX)
+2025-11-12T10:37:42.588+01:00 DEBUG 51046 --- [supplychain] [           main] o.s.s.i.SupplierIntegrationTest          : Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-12T10:37:42.589+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.i.SupplierIntegrationTest          : The following 1 profile is active: "test"
+2025-11-12T10:37:44.613+01:00  INFO 51046 --- [supplychain] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-12T10:37:44.730+01:00  INFO 51046 --- [supplychain] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 10 JPA repository interfaces.
+2025-11-12T10:37:45.642+01:00  INFO 51046 --- [supplychain] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-12T10:37:45.737+01:00  INFO 51046 --- [supplychain] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-12T10:37:45.789+01:00  INFO 51046 --- [supplychain] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-12T10:37:46.017+01:00  INFO 51046 --- [supplychain] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-12T10:37:46.075+01:00  INFO 51046 --- [supplychain] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-12T10:37:46.533+01:00  INFO 51046 --- [supplychain] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-11-12T10:37:46.536+01:00  INFO 51046 --- [supplychain] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-12T10:37:46.576+01:00  WARN 51046 --- [supplychain] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-11-12T10:37:46.586+01:00  WARN 51046 --- [supplychain] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-12T10:37:46.627+01:00  INFO 51046 --- [supplychain] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-12T10:37:48.288+01:00  INFO 51046 --- [supplychain] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    set client_min_messages = WARNING
+2025-11-12T10:37:48.319+01:00  WARN 51046 --- [supplychain] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
+    set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "\000a    set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "\000a    set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:213) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:186) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:156) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:116) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.12.jar:6.2.12]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.12.jar:6.2.12]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.12.jar:6.2.12]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.12.jar:6.2.12]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.12.jar:6.2.12]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:973) ~[spring-context-6.2.12.jar:6.2.12]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.12.jar:6.2.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.7.jar:3.5.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.7.jar:3.5.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.7.jar:3.5.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:144) ~[spring-boot-test-3.5.7.jar:3.5.7]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58) ~[spring-core-6.2.12.jar:6.2.12]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46) ~[spring-core-6.2.12.jar:6.2.12]
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461) ~[spring-boot-3.5.7.jar:3.5.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:563) ~[spring-boot-test-3.5.7.jar:3.5.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:144) ~[spring-boot-test-3.5.7.jar:3.5.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110) ~[spring-boot-test-3.5.7.jar:3.5.7]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:200) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:139) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:159) ~[spring-test-6.2.12.jar:6.2.12]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:383) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:388) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:293) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:292) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:281) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:280) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:112) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:111) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithoutCancellationToken(LauncherAdapter.java:60) ~[surefire-junit-platform-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:52) ~[surefire-junit-platform-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.4.jar:3.5.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.4.jar:3.5.4]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING"; SQL statement:
+
+    set client_min_messages = WARNING [42001-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.ParserBase.getSyntaxError(ParserBase.java:762) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseSet(Parser.java:7592) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parsePrepared(Parser.java:614) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:561) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.3.232.jar:2.3.232]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.6.33.Final.jar:6.6.33.Final]
+	... 121 common frames omitted
+
+Hibernate: 
+    alter table if exists bill_of_materials 
+       drop constraint if exists FK6plmg2wogh89mqdviomg47rto
+Hibernate: 
+    alter table if exists bill_of_materials 
+       drop constraint if exists FKnp6wspb09vab0709d85l9ll7k
+Hibernate: 
+    alter table if exists deliveries 
+       drop constraint if exists FK7isx0rnbgqr1dcofd5putl6jw
+Hibernate: 
+    alter table if exists material_suppliers 
+       drop constraint if exists FKnk9of17jirilumyfcjjyxnhsc
+Hibernate: 
+    alter table if exists material_suppliers 
+       drop constraint if exists FKmvf2k4r6ct6dhm0udjlfvmaal
+Hibernate: 
+    alter table if exists orders 
+       drop constraint if exists FKpxtb8awmi0dk6smoh2vp1litg
+Hibernate: 
+    alter table if exists product_orders 
+       drop constraint if exists FK9i0hwhyugrqsnrxstrq6n9sqb
+Hibernate: 
+    alter table if exists product_orders 
+       drop constraint if exists FKhhfumsfn0ot5ke9nf7gr1ynm3
+Hibernate: 
+    alter table if exists production_orders 
+       drop constraint if exists FKj0vvl01mwu7lukvk8glrii11g
+Hibernate: 
+    alter table if exists supply_order_lines 
+       drop constraint if exists FK44f36oeepqnm03lvy40vsa24g
+Hibernate: 
+    alter table if exists supply_order_lines 
+       drop constraint if exists FK3xw6b5nxjfkr2b4crd5ol4mcx
+Hibernate: 
+    alter table if exists supply_orders 
+       drop constraint if exists FK5i5oe7rcphyrbd7kmv0gh7p9a
+Hibernate: 
+    drop table if exists bill_of_materials cascade
+Hibernate: 
+    drop table if exists customers cascade
+Hibernate: 
+    drop table if exists deliveries cascade
+Hibernate: 
+    drop table if exists material_suppliers cascade
+Hibernate: 
+    drop table if exists orders cascade
+Hibernate: 
+    drop table if exists product_orders cascade
+Hibernate: 
+    drop table if exists production_orders cascade
+Hibernate: 
+    drop table if exists products cascade
+Hibernate: 
+    drop table if exists raw_materials cascade
+Hibernate: 
+    drop table if exists suppliers cascade
+Hibernate: 
+    drop table if exists supply_order_lines cascade
+Hibernate: 
+    drop table if exists supply_orders cascade
+Hibernate: 
+    drop table if exists users cascade
+Hibernate: 
+    create table bill_of_materials (
+        quantity integer not null,
+        created_date timestamp(6),
+        idbom bigint generated by default as identity,
+        material_id bigint not null,
+        product_id bigint not null,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        updated_by varchar(255),
+        primary key (idbom)
+    )
+Hibernate: 
+    create table customers (
+        created_date timestamp(6),
+        id_customer bigint generated by default as identity,
+        updated_date timestamp(6),
+        address varchar(255) not null,
+        created_by varchar(255),
+        email varchar(255) not null,
+        name varchar(255) not null,
+        phone varchar(255),
+        updated_by varchar(255),
+        primary key (id_customer)
+    )
+Hibernate: 
+    create table deliveries (
+        delivery_cost numeric(10,2),
+        delivery_date date,
+        created_date timestamp(6),
+        id_delivery bigint generated by default as identity,
+        order_id bigint not null unique,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        delivery_address varchar(255),
+        driver varchar(255),
+        status varchar(255) not null check (status in ('PLANIFIEE','EN_COURS','LIVREE')),
+        updated_by varchar(255),
+        primary key (id_delivery)
+    )
+Hibernate: 
+    create table material_suppliers (
+        material_id bigint not null,
+        supplier_id bigint not null
+    )
+Hibernate: 
+    create table orders (
+        total_amount numeric(10,2) not null,
+        created_date timestamp(6),
+        customer_id bigint not null,
+        id_order bigint generated by default as identity,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        status varchar(255) not null check (status in ('EN_PREPARATION','EN_ROUTE','LIVREE')),
+        updated_by varchar(255),
+        primary key (id_order)
+    )
+Hibernate: 
+    create table product_orders (
+        quantity integer not null,
+        total_price numeric(10,2) not null,
+        unit_price numeric(10,2) not null,
+        created_date timestamp(6),
+        id_product_order bigint generated by default as identity,
+        order_id bigint not null,
+        product_id bigint not null,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        updated_by varchar(255),
+        primary key (id_product_order)
+    )
+Hibernate: 
+    create table production_orders (
+        endt_date date,
+        quantity integer not null,
+        start_date date,
+        created_date timestamp(6),
+        id_order bigint generated by default as identity,
+        product_id bigint not null,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        order_number varchar(255) not null unique,
+        priority varchar(255) not null check (priority in ('STANDARD','HIGH','URGENT')),
+        status varchar(255) not null check (status in ('EN_ATTENTE','EN_PRODUCTION','TERMINE','BLOQUE')),
+        updated_by varchar(255),
+        primary key (id_order)
+    )
+Hibernate: 
+    create table products (
+        cost numeric(10,2) not null,
+        minimum_stock integer not null,
+        production_time integer not null,
+        stock integer not null,
+        created_date timestamp(6),
+        id_product bigint generated by default as identity,
+        updated_date timestamp(6),
+        description varchar(1000),
+        created_by varchar(255),
+        name varchar(255) not null,
+        unit varchar(255) not null,
+        updated_by varchar(255),
+        primary key (id_product)
+    )
+Hibernate: 
+    create table raw_materials (
+        last_restock_date date,
+        reserved_stock integer not null,
+        stock integer not null,
+        stock_min integer not null,
+        created_date timestamp(6),
+        id_material bigint generated by default as identity,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        description varchar(255),
+        name varchar(255) not null,
+        unit varchar(255) not null,
+        updated_by varchar(255),
+        primary key (id_material)
+    )
+Hibernate: 
+    create table suppliers (
+        lead_time integer,
+        rating float(53),
+        created_date timestamp(6),
+        id_supplier bigint generated by default as identity,
+        updated_date timestamp(6),
+        contact varchar(255) not null,
+        created_by varchar(255),
+        email varchar(255) not null,
+        name varchar(255) not null,
+        phone varchar(255),
+        updated_by varchar(255),
+        primary key (id_supplier)
+    )
+Hibernate: 
+    create table supply_order_lines (
+        quantity integer not null,
+        unit_price numeric(10,2) not null,
+        created_date timestamp(6),
+        id_line bigint generated by default as identity,
+        raw_material_id bigint not null,
+        supply_order_id bigint not null,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        updated_by varchar(255),
+        primary key (id_line)
+    )
+Hibernate: 
+    create table supply_orders (
+        order_date date not null,
+        total_amount numeric(10,2),
+        created_date timestamp(6),
+        id_order bigint generated by default as identity,
+        supplier_id bigint not null,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        order_number varchar(255) not null unique,
+        status varchar(255) not null check (status in ('EN_ATTENTE','EN_COURS','RECUE')),
+        updated_by varchar(255),
+        primary key (id_order)
+    )
+Hibernate: 
+    create table users (
+        created_date timestamp(6),
+        id_user bigint generated by default as identity,
+        updated_date timestamp(6),
+        created_by varchar(255),
+        email varchar(255) not null unique,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        password varchar(255) not null,
+        role varchar(255) not null check (role in ('ADMIN','GESTIONNAIRE_APPROVISIONNEMENT','RESPONSABLE_ACHATS','SUPERVISEUR_LOGISTIQUE','CHEF_PRODUCTION','PLANIFICATEUR','SUPERVISEUR_PRODUCTION','GESTIONNAIRE_COMMERCIAL','RESPONSABLE_LOGISTIQUE','SUPERVISEUR_LIVRAISONS')),
+        updated_by varchar(255),
+        primary key (id_user)
+    )
+Hibernate: 
+    alter table if exists bill_of_materials 
+       add constraint FK6plmg2wogh89mqdviomg47rto 
+       foreign key (material_id) 
+       references raw_materials
+Hibernate: 
+    alter table if exists bill_of_materials 
+       add constraint FKnp6wspb09vab0709d85l9ll7k 
+       foreign key (product_id) 
+       references products
+Hibernate: 
+    alter table if exists deliveries 
+       add constraint FK7isx0rnbgqr1dcofd5putl6jw 
+       foreign key (order_id) 
+       references orders
+Hibernate: 
+    alter table if exists material_suppliers 
+       add constraint FKnk9of17jirilumyfcjjyxnhsc 
+       foreign key (supplier_id) 
+       references suppliers
+Hibernate: 
+    alter table if exists material_suppliers 
+       add constraint FKmvf2k4r6ct6dhm0udjlfvmaal 
+       foreign key (material_id) 
+       references raw_materials
+Hibernate: 
+    alter table if exists orders 
+       add constraint FKpxtb8awmi0dk6smoh2vp1litg 
+       foreign key (customer_id) 
+       references customers
+Hibernate: 
+    alter table if exists product_orders 
+       add constraint FK9i0hwhyugrqsnrxstrq6n9sqb 
+       foreign key (order_id) 
+       references orders
+Hibernate: 
+    alter table if exists product_orders 
+       add constraint FKhhfumsfn0ot5ke9nf7gr1ynm3 
+       foreign key (product_id) 
+       references products
+Hibernate: 
+    alter table if exists production_orders 
+       add constraint FKj0vvl01mwu7lukvk8glrii11g 
+       foreign key (product_id) 
+       references products
+Hibernate: 
+    alter table if exists supply_order_lines 
+       add constraint FK44f36oeepqnm03lvy40vsa24g 
+       foreign key (raw_material_id) 
+       references raw_materials
+Hibernate: 
+    alter table if exists supply_order_lines 
+       add constraint FK3xw6b5nxjfkr2b4crd5ol4mcx 
+       foreign key (supply_order_id) 
+       references supply_orders
+Hibernate: 
+    alter table if exists supply_orders 
+       add constraint FK5i5oe7rcphyrbd7kmv0gh7p9a 
+       foreign key (supplier_id) 
+       references suppliers
+2025-11-12T10:37:48.413+01:00  INFO 51046 --- [supplychain] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-12T10:37:48.916+01:00  INFO 51046 --- [supplychain] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-12T10:37:51.337+01:00  INFO 51046 --- [supplychain] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-11-12T10:37:51.338+01:00  INFO 51046 --- [supplychain] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-11-12T10:37:51.344+01:00  INFO 51046 --- [supplychain] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-11-12T10:37:51.358+01:00  INFO 51046 --- [supplychain] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 19 ms
+2025-11-12T10:37:51.441+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.i.SupplierIntegrationTest          : Started SupplierIntegrationTest in 9.431 seconds (process running for 13.068)
+Hibernate: 
+    select
+        count(*) 
+    from
+        suppliers s1_0
+2025-11-12T10:37:51.628+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Starting database initialization with fake data...
+2025-11-12T10:37:51.629+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Creating suppliers...
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        suppliers
+        (contact, created_by, created_date, email, lead_time, name, phone, rating, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-11-12T10:37:51.716+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Created 10 suppliers
+2025-11-12T10:37:51.716+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Creating raw materials...
+Hibernate: 
+    select
+        s1_0.id_supplier,
+        s1_0.contact,
+        s1_0.created_by,
+        s1_0.created_date,
+        s1_0.email,
+        s1_0.lead_time,
+        s1_0.name,
+        s1_0.phone,
+        s1_0.rating,
+        s1_0.updated_by,
+        s1_0.updated_date 
+    from
+        suppliers s1_0
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        raw_materials
+        (created_by, created_date, description, last_restock_date, name, reserved_stock, stock, stock_min, unit, updated_by, updated_date) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-11-12T10:37:51.779+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Created 20 raw materials
+2025-11-12T10:37:51.779+01:00  INFO 51046 --- [supplychain] [           main] o.s.supplychain.config.DataInitializer   : Database initialization completed successfully!
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        material_suppliers
+        (material_id, supplier_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        s1_0.id_supplier,
+        s1_0.contact,
+        s1_0.created_by,
+        s1_0.created_date,
+        s1_0.email,
+        s1_0.lead_time,
+        s1_0.name,
+        s1_0.phone,
+        s1_0.rating,
+        s1_0.updated_by,
+        s1_0.updated_date 
+    from
+        suppliers s1_0 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        count(s1_0.id_supplier) 
+    from
+        suppliers s1_0
+Hibernate: 
+    select
+        m1_0.supplier_id,
+        m1_1.id_material,
+        m1_1.created_by,
+        m1_1.created_date,
+        m1_1.description,
+        m1_1.last_restock_date,
+        m1_1.name,
+        m1_1.reserved_stock,
+        m1_1.stock,
+        m1_1.stock_min,
+        m1_1.unit,
+        m1_1.updated_by,
+        m1_1.updated_date 
+    from
+        material_suppliers m1_0 
+    join
+        raw_materials m1_1 
+            on m1_1.id_material=m1_0.material_id 
+    where
+        m1_0.supplier_id=?
+Hibernate: 
+    select
+        m1_0.supplier_id,
+        m1_1.id_material,
+        m1_1.created_by,
+        m1_1.created_date,
+        m1_1.description,
+        m1_1.last_restock_date,
+        m1_1.name,
+        m1_1.reserved_stock,
+        m1_1.stock,
+        m1_1.stock_min,
+        m1_1.unit,
+        m1_1.updated_by,
+        m1_1.updated_date 
+    from
+        material_suppliers m1_0 
+    join
+        raw_materials m1_1 
+            on m1_1.id_material=m1_0.material_id 
+    where
+        m1_0.supplier_id=?
+Hibernate: 
+    select
+        m1_0.supplier_id,
+        m1_1.id_material,
+        m1_1.created_by,
+        m1_1.created_date,
+        m1_1.description,
+        m1_1.last_restock_date,
+        m1_1.name,
+        m1_1.reserved_stock,
+        m1_1.stock,
+        m1_1.stock_min,
+        m1_1.unit,
+        m1_1.updated_by,
+        m1_1.updated_date 
+    from
+        material_suppliers m1_0 
+    join
+        raw_materials m1_1 
+            on m1_1.id_material=m1_0.material_id 
+    where
+        m1_0.supplier_id=?
+Hibernate: 
+    select
+        m1_0.supplier_id,
+        m1_1.id_material,
+        m1_1.created_by,
+        m1_1.created_date,
+        m1_1.description,
+        m1_1.last_restock_date,
+        m1_1.name,
+        m1_1.reserved_stock,
+        m1_1.stock,
+        m1_1.stock_min,
+        m1_1.unit,
+        m1_1.updated_by,
+        m1_1.updated_date 
+    from
+        material_suppliers m1_0 
+    join
+        raw_materials m1_1 
+            on m1_1.id_material=m1_0.material_id 
+    where
+        m1_0.supplier_id=?
+Hibernate: 
+    select
+        m1_0.supplier_id,
+        m1_1.id_material,
+        m1_1.created_by,
+        m1_1.created_date,
+        m1_1.description,
+        m1_1.last_restock_date,
+        m1_1.name,
+        m1_1.reserved_stock,
+        m1_1.stock,
+        m1_1.stock_min,
+        m1_1.unit,
+        m1_1.updated_by,
+        m1_1.updated_date 
+    from
+        material_suppliers m1_0 
+    join
+        raw_materials m1_1 
+            on m1_1.id_material=m1_0.material_id 
+    where
+        m1_0.supplier_id=?
+2025-11-12T10:37:51.982+01:00  WARN 51046 --- [supplychain] [           main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+org.springframework.mock.web.MockHttpServletResponse@5f523b8
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.94 s -- in org.supplychain.supplychain.integration.[1mSupplierIntegrationTest[m
+[[1;34mINFO[m] Running org.supplychain.supplychain.integration.[1mOrderIntegrationTest[m
+2025-11-12T10:37:52.051+01:00  INFO 51046 --- [supplychain] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.supplychain.supplychain.integration.OrderIntegrationTest]: OrderIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-11-12T10:37:52.055+01:00  INFO 51046 --- [supplychain] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.supplychain.supplychain.SupplychainApplication for test class org.supplychain.supplychain.integration.OrderIntegrationTest
+Hibernate: 
+    select
+        o1_0.id_order,
+        o1_0.created_by,
+        o1_0.created_date,
+        o1_0.customer_id,
+        o1_0.status,
+        o1_0.total_amount,
+        o1_0.updated_by,
+        o1_0.updated_date 
+    from
+        orders o1_0 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in org.supplychain.supplychain.integration.[1mOrderIntegrationTest[m
+[[1;34mINFO[m] Running org.supplychain.supplychain.controller.approvisionnement.[1mSupplierControllerTest[m
+2025-11-12T10:37:52.092+01:00  INFO 51046 --- [supplychain] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.supplychain.supplychain.controller.approvisionnement.SupplierControllerTest]: SupplierControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-11-12T10:37:52.113+01:00  INFO 51046 --- [supplychain] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.supplychain.supplychain.SupplychainApplication for test class org.supplychain.supplychain.controller.approvisionnement.SupplierControllerTest
+2025-11-12T10:37:52.116+01:00  INFO 51046 --- [supplychain] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-11-12T10:37:52.142+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.c.a.SupplierControllerTest         : Starting SupplierControllerTest using Java 17.0.16 with PID 51046 (started by mustapha in /home/mustapha/IdeaProjects/SupplyChainX)
+2025-11-12T10:37:52.142+01:00 DEBUG 51046 --- [supplychain] [           main] o.s.s.c.a.SupplierControllerTest         : Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-12T10:37:52.142+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.c.a.SupplierControllerTest         : The following 1 profile is active: "test"
+2025-11-12T10:37:52.356+01:00  INFO 51046 --- [supplychain] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-11-12T10:37:52.356+01:00  INFO 51046 --- [supplychain] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-11-12T10:37:52.357+01:00  INFO 51046 --- [supplychain] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-11-12T10:37:52.361+01:00  INFO 51046 --- [supplychain] [           main] o.s.s.c.a.SupplierControllerTest         : Started SupplierControllerTest in 0.245 seconds (process running for 13.989)
+2025-11-12T10:37:52.550+01:00  WARN 51046 --- [supplychain] [           main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.481 s -- in org.supplychain.supplychain.controller.approvisionnement.[1mSupplierControllerTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 7, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.11:report[m [1m(report)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Loading execution data file /home/mustapha/IdeaProjects/SupplyChainX/target/jacoco.exec
+[[1;34mINFO[m] Analyzed bundle 'supplychain' with 54 classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/mustapha/IdeaProjects/SupplyChainX/target/supplychain-0.0.1-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:3.5.7:repackage[m [1m(repackage)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Replacing main artifact /home/mustapha/IdeaProjects/SupplyChainX/target/supplychain-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[[1;34mINFO[m] The original artifact has been renamed to /home/mustapha/IdeaProjects/SupplyChainX/target/supplychain-0.0.1-SNAPSHOT.jar.original
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.11:check[m [1m(jacoco-check)[m @ [36msupplychain[0;1m ---[m
+[[1;34mINFO[m] Loading execution data file /home/mustapha/IdeaProjects/SupplyChainX/target/jacoco.exec
+[[1;34mINFO[m] Analyzed bundle 'supplychain' with 54 classes
+[[1;34mINFO[m] All coverage checks have been met.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36morg.supplychain:supplychain[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding supplychain 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32msonar-maven-plugin:3.10.0.2594:sonar[m [1m(default-cli)[m @ [36msupplychain[0;1m ---[m
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+Progress (1): 2.3/24 kBProgress (2): 2.3/24 kB | 2.3/284 kBProgress (2): 5.1/24 kB | 2.3/284 kBProgress (2): 5.1/24 kB | 5.0/284 kBProgress (3): 5.1/24 kB | 5.0/284 kB | 2.3/13 kBProgress (3): 7.8/24 kB | 5.0/284 kB | 2.3/13 kBProgress (3): 7.8/24 kB | 7.7/284 kB | 2.3/13 kBProgress (3): 7.8/24 kB | 7.7/284 kB | 5.1/13 kBProgress (3): 11/24 kB | 7.7/284 kB | 5.1/13 kB Progress (3): 11/24 kB | 7.7/284 kB | 7.8/13 kBProgress (3): 11/24 kB | 10/284 kB | 7.8/13 kB Progress (3): 13/24 kB | 10/284 kB | 7.8/13 kBProgress (3): 13/24 kB | 10/284 kB | 11/13 kB Progress (3): 13/24 kB | 13/284 kB | 11/13 kBProgress (4): 13/24 kB | 13/284 kB | 11/13 kB | 2.3/625 kBProgress (4): 13/24 kB | 13/284 kB | 13 kB | 2.3/625 kB   Progress (4): 16/24 kB | 13/284 kB | 13 kB | 2.3/625 kBProgress (4): 16/24 kB | 13/284 kB | 13 kB | 5.0/625 kBProgress (4): 16/24 kB | 16/284 kB | 13 kB | 5.0/625 kBProgress (4): 19/24 kB | 16/284 kB | 13 kB | 5.0/625 kBProgress (4): 19/24 kB | 16/284 kB | 13 kB | 7.8/625 kBProgress (4): 19/24 kB | 19/284 kB | 13 kB | 7.8/625 kBProgress (4): 22/24 kB | 19/284 kB | 13 kB | 7.8/625 kBProgress (4): 22/24 kB | 21/284 kB | 13 kB | 7.8/625 kBProgress (4): 24 kB | 21/284 kB | 13 kB | 7.8/625 kB   Progress (4): 24 kB | 24/284 kB | 13 kB | 7.8/625 kBProgress (4): 24 kB | 27/284 kB | 13 kB | 7.8/625 kBProgress (5): 24 kB | 27/284 kB | 13 kB | 7.8/625 kB | 2.3/264 kBProgress (5): 24 kB | 30/284 kB | 13 kB | 7.8/625 kB | 2.3/264 kBProgress (5): 24 kB | 30/284 kB | 13 kB | 7.8/625 kB | 5.0/264 kBProgress (5): 24 kB | 32/284 kB | 13 kB | 7.8/625 kB | 5.0/264 kBProgress (5): 24 kB | 32/284 kB | 13 kB | 7.8/625 kB | 7.8/264 kBProgress (5): 24 kB | 35/284 kB | 13 kB | 7.8/625 kB | 7.8/264 kBProgress (5): 24 kB | 35/284 kB | 13 kB | 7.8/625 kB | 11/264 kB Progress (5): 24 kB | 38/284 kB | 13 kB | 7.8/625 kB | 11/264 kBProgress (5): 24 kB | 38/284 kB | 13 kB | 7.8/625 kB | 13/264 kBProgress (5): 24 kB | 41/284 kB | 13 kB | 7.8/625 kB | 13/264 kBProgress (5): 24 kB | 41/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 43/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 46/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 49/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 52/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 54/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 7.8/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 11/625 kB | 16/264 kB Progress (5): 24 kB | 58/284 kB | 13 kB | 13/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 16/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 19/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 21/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 24/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 27/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 30/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 32/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 35/625 kB | 16/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 35/625 kB | 19/264 kBProgress (5): 24 kB | 58/284 kB | 13 kB | 38/625 kB | 19/264 kBProgress (5): 24 kB | 62/284 kB | 13 kB | 38/625 kB | 19/264 kBProgress (5): 24 kB | 62/284 kB | 13 kB | 41/625 kB | 19/264 kBProgress (5): 24 kB | 62/284 kB | 13 kB | 41/625 kB | 21/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 41/625 kB | 21/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 43/625 kB | 21/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 43/625 kB | 24/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 46/625 kB | 24/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 46/625 kB | 27/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 27/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 30/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 32/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 35/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 38/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 41/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 43/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 46/264 kBProgress (5): 24 kB | 67/284 kB | 13 kB | 49/625 kB | 49/264 kBProgress (5): 24 kB | 71/284 kB | 13 kB | 49/625 kB | 49/264 kBProgress (5): 24 kB | 71/284 kB | 13 kB | 49/625 kB | 52/264 kBProgress (5): 24 kB | 75/284 kB | 13 kB | 49/625 kB | 52/264 kBProgress (5): 24 kB | 75/284 kB | 13 kB | 49/625 kB | 54/264 kBProgress (5): 24 kB | 79/284 kB | 13 kB | 49/625 kB | 54/264 kBProgress (5): 24 kB | 81/284 kB | 13 kB | 49/625 kB | 54/264 kBProgress (5): 24 kB | 81/284 kB | 13 kB | 49/625 kB | 58/264 kBProgress (5): 24 kB | 85/284 kB | 13 kB | 49/625 kB | 58/264 kBProgress (5): 24 kB | 89/284 kB | 13 kB | 49/625 kB | 58/264 kB                                                               Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar (24 kB at 46 kB/s)
+Progress (4): 89/284 kB | 13 kB | 52/625 kB | 58/264 kBProgress (4): 89/284 kB | 13 kB | 54/625 kB | 58/264 kBProgress (4): 89/284 kB | 13 kB | 58/625 kB | 58/264 kBProgress (4): 93/284 kB | 13 kB | 58/625 kB | 58/264 kBProgress (4): 97/284 kB | 13 kB | 58/625 kB | 58/264 kBProgress (4): 101/284 kB | 13 kB | 58/625 kB | 58/264 kBProgress (4): 101/284 kB | 13 kB | 62/625 kB | 58/264 kBProgress (4): 101/284 kB | 13 kB | 67/625 kB | 58/264 kBProgress (4): 101/284 kB | 13 kB | 71/625 kB | 58/264 kBProgress (4): 101/284 kB | 13 kB | 71/625 kB | 63/264 kB                                                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar (13 kB at 25 kB/s)
+Progress (3): 101/284 kB | 75/625 kB | 63/264 kBProgress (3): 101/284 kB | 75/625 kB | 67/264 kBProgress (3): 101/284 kB | 79/625 kB | 67/264 kBProgress (3): 101/284 kB | 81/625 kB | 67/264 kBProgress (3): 101/284 kB | 81/625 kB | 71/264 kBProgress (3): 106/284 kB | 81/625 kB | 71/264 kBProgress (3): 110/284 kB | 81/625 kB | 71/264 kBProgress (3): 114/284 kB | 81/625 kB | 71/264 kBProgress (3): 114/284 kB | 81/625 kB | 75/264 kBProgress (3): 118/284 kB | 81/625 kB | 75/264 kBProgress (3): 122/284 kB | 81/625 kB | 75/264 kBProgress (3): 122/284 kB | 81/625 kB | 79/264 kBProgress (3): 122/284 kB | 81/625 kB | 81/264 kBProgress (3): 126/284 kB | 81/625 kB | 81/264 kBProgress (3): 126/284 kB | 81/625 kB | 85/264 kBProgress (3): 130/284 kB | 81/625 kB | 85/264 kBProgress (3): 134/284 kB | 81/625 kB | 85/264 kBProgress (3): 134/284 kB | 81/625 kB | 89/264 kBProgress (3): 138/284 kB | 81/625 kB | 89/264 kBProgress (3): 142/284 kB | 81/625 kB | 89/264 kBProgress (3): 147/284 kB | 81/625 kB | 89/264 kBProgress (3): 149/284 kB | 81/625 kB | 89/264 kBProgress (3): 151/284 kB | 81/625 kB | 89/264 kBProgress (3): 155/284 kB | 81/625 kB | 89/264 kBProgress (3): 159/284 kB | 81/625 kB | 89/264 kBProgress (3): 163/284 kB | 81/625 kB | 89/264 kBProgress (3): 168/284 kB | 81/625 kB | 89/264 kBProgress (3): 168/284 kB | 85/625 kB | 89/264 kBProgress (3): 172/284 kB | 85/625 kB | 89/264 kBProgress (3): 176/284 kB | 85/625 kB | 89/264 kBProgress (3): 180/284 kB | 85/625 kB | 89/264 kBProgress (3): 184/284 kB | 85/625 kB | 89/264 kBProgress (3): 188/284 kB | 85/625 kB | 89/264 kBProgress (3): 192/284 kB | 85/625 kB | 89/264 kBProgress (3): 196/284 kB | 85/625 kB | 89/264 kBProgress (3): 200/284 kB | 85/625 kB | 89/264 kBProgress (3): 200/284 kB | 89/625 kB | 89/264 kBProgress (3): 200/284 kB | 93/625 kB | 89/264 kBProgress (3): 200/284 kB | 97/625 kB | 89/264 kBProgress (3): 200/284 kB | 102/625 kB | 89/264 kBProgress (3): 200/284 kB | 106/625 kB | 89/264 kBProgress (3): 200/284 kB | 110/625 kB | 89/264 kBProgress (3): 200/284 kB | 114/625 kB | 89/264 kBProgress (3): 200/284 kB | 118/625 kB | 89/264 kBProgress (3): 200/284 kB | 122/625 kB | 89/264 kBProgress (3): 200/284 kB | 126/625 kB | 89/264 kBProgress (3): 200/284 kB | 130/625 kB | 89/264 kBProgress (3): 200/284 kB | 134/625 kB | 89/264 kBProgress (3): 200/284 kB | 134/625 kB | 93/264 kBProgress (3): 200/284 kB | 138/625 kB | 93/264 kBProgress (3): 200/284 kB | 142/625 kB | 93/264 kBProgress (3): 200/284 kB | 142/625 kB | 97/264 kBProgress (3): 200/284 kB | 147/625 kB | 97/264 kBProgress (3): 200/284 kB | 149/625 kB | 97/264 kBProgress (3): 200/284 kB | 149/625 kB | 102/264 kBProgress (3): 200/284 kB | 151/625 kB | 102/264 kBProgress (3): 200/284 kB | 151/625 kB | 106/264 kBProgress (3): 200/284 kB | 151/625 kB | 110/264 kBProgress (3): 200/284 kB | 151/625 kB | 114/264 kBProgress (3): 200/284 kB | 151/625 kB | 118/264 kBProgress (3): 200/284 kB | 151/625 kB | 122/264 kBProgress (3): 204/284 kB | 151/625 kB | 122/264 kBProgress (3): 204/284 kB | 151/625 kB | 126/264 kBProgress (3): 208/284 kB | 151/625 kB | 126/264 kBProgress (3): 208/284 kB | 151/625 kB | 130/264 kBProgress (3): 213/284 kB | 151/625 kB | 130/264 kBProgress (3): 213/284 kB | 151/625 kB | 134/264 kBProgress (3): 217/284 kB | 151/625 kB | 134/264 kBProgress (3): 219/284 kB | 151/625 kB | 134/264 kBProgress (3): 219/284 kB | 151/625 kB | 138/264 kBProgress (3): 223/284 kB | 151/625 kB | 138/264 kBProgress (3): 223/284 kB | 151/625 kB | 142/264 kBProgress (3): 223/284 kB | 151/625 kB | 147/264 kBProgress (3): 223/284 kB | 151/625 kB | 151/264 kBProgress (3): 227/284 kB | 151/625 kB | 151/264 kBProgress (3): 231/284 kB | 151/625 kB | 151/264 kBProgress (3): 231/284 kB | 151/625 kB | 155/264 kBProgress (3): 235/284 kB | 151/625 kB | 155/264 kBProgress (3): 239/284 kB | 151/625 kB | 155/264 kBProgress (3): 239/284 kB | 151/625 kB | 159/264 kBProgress (3): 239/284 kB | 151/625 kB | 161/264 kBProgress (3): 239/284 kB | 151/625 kB | 165/264 kBProgress (3): 243/284 kB | 151/625 kB | 165/264 kBProgress (3): 247/284 kB | 151/625 kB | 165/264 kBProgress (3): 252/284 kB | 151/625 kB | 165/264 kBProgress (3): 256/284 kB | 151/625 kB | 165/264 kBProgress (3): 260/284 kB | 151/625 kB | 165/264 kBProgress (3): 264/284 kB | 151/625 kB | 165/264 kBProgress (3): 268/284 kB | 151/625 kB | 165/264 kBProgress (3): 272/284 kB | 151/625 kB | 165/264 kBProgress (3): 276/284 kB | 151/625 kB | 165/264 kBProgress (3): 280/284 kB | 151/625 kB | 165/264 kBProgress (3): 284 kB | 151/625 kB | 165/264 kB    Progress (3): 284 kB | 155/625 kB | 165/264 kBProgress (3): 284 kB | 159/625 kB | 165/264 kBProgress (3): 284 kB | 163/625 kB | 165/264 kBProgress (3): 284 kB | 168/625 kB | 165/264 kBProgress (3): 284 kB | 172/625 kB | 165/264 kBProgress (3): 284 kB | 172/625 kB | 169/264 kBProgress (3): 284 kB | 176/625 kB | 169/264 kBProgress (3): 284 kB | 176/625 kB | 173/264 kBProgress (3): 284 kB | 180/625 kB | 173/264 kBProgress (3): 284 kB | 180/625 kB | 177/264 kBProgress (3): 284 kB | 184/625 kB | 177/264 kBProgress (3): 284 kB | 184/625 kB | 181/264 kBProgress (3): 284 kB | 188/625 kB | 181/264 kBProgress (3): 284 kB | 188/625 kB | 186/264 kBProgress (3): 284 kB | 192/625 kB | 186/264 kBProgress (3): 284 kB | 192/625 kB | 190/264 kBProgress (3): 284 kB | 196/625 kB | 190/264 kBProgress (3): 284 kB | 196/625 kB | 194/264 kBProgress (3): 284 kB | 200/625 kB | 194/264 kBProgress (3): 284 kB | 200/625 kB | 198/264 kBProgress (3): 284 kB | 204/625 kB | 198/264 kBProgress (3): 284 kB | 204/625 kB | 202/264 kBProgress (3): 284 kB | 208/625 kB | 202/264 kBProgress (3): 284 kB | 208/625 kB | 206/264 kBProgress (3): 284 kB | 213/625 kB | 206/264 kBProgress (3): 284 kB | 213/625 kB | 210/264 kBProgress (3): 284 kB | 217/625 kB | 210/264 kBProgress (3): 284 kB | 219/625 kB | 210/264 kBProgress (3): 284 kB | 219/625 kB | 214/264 kBProgress (3): 284 kB | 223/625 kB | 214/264 kBProgress (3): 284 kB | 223/625 kB | 218/264 kBProgress (3): 284 kB | 223/625 kB | 222/264 kBProgress (3): 284 kB | 227/625 kB | 222/264 kBProgress (3): 284 kB | 227/625 kB | 226/264 kBProgress (3): 284 kB | 231/625 kB | 226/264 kBProgress (3): 284 kB | 231/625 kB | 231/264 kBProgress (3): 284 kB | 235/625 kB | 231/264 kBProgress (3): 284 kB | 235/625 kB | 235/264 kBProgress (3): 284 kB | 239/625 kB | 235/264 kBProgress (3): 284 kB | 239/625 kB | 239/264 kBProgress (3): 284 kB | 239/625 kB | 243/264 kBProgress (3): 284 kB | 239/625 kB | 247/264 kBProgress (3): 284 kB | 243/625 kB | 247/264 kBProgress (3): 284 kB | 243/625 kB | 251/264 kBProgress (3): 284 kB | 247/625 kB | 251/264 kBProgress (3): 284 kB | 247/625 kB | 254/264 kBProgress (3): 284 kB | 252/625 kB | 254/264 kBProgress (3): 284 kB | 256/625 kB | 254/264 kBProgress (3): 284 kB | 260/625 kB | 254/264 kBProgress (3): 284 kB | 264/625 kB | 254/264 kBProgress (3): 284 kB | 268/625 kB | 254/264 kBProgress (3): 284 kB | 272/625 kB | 254/264 kBProgress (3): 284 kB | 276/625 kB | 254/264 kBProgress (3): 284 kB | 280/625 kB | 254/264 kBProgress (3): 284 kB | 284/625 kB | 254/264 kBProgress (3): 284 kB | 288/625 kB | 254/264 kBProgress (3): 284 kB | 293/625 kB | 254/264 kBProgress (3): 284 kB | 297/625 kB | 254/264 kBProgress (3): 284 kB | 301/625 kB | 254/264 kBProgress (3): 284 kB | 305/625 kB | 254/264 kBProgress (3): 284 kB | 309/625 kB | 254/264 kBProgress (3): 284 kB | 313/625 kB | 254/264 kBProgress (3): 284 kB | 317/625 kB | 254/264 kBProgress (3): 284 kB | 321/625 kB | 254/264 kBProgress (3): 284 kB | 325/625 kB | 254/264 kBProgress (3): 284 kB | 329/625 kB | 254/264 kBProgress (3): 284 kB | 333/625 kB | 254/264 kBProgress (3): 284 kB | 338/625 kB | 254/264 kBProgress (3): 284 kB | 342/625 kB | 254/264 kBProgress (3): 284 kB | 346/625 kB | 254/264 kBProgress (3): 284 kB | 350/625 kB | 254/264 kBProgress (3): 284 kB | 354/625 kB | 254/264 kBProgress (3): 284 kB | 358/625 kB | 254/264 kBProgress (3): 284 kB | 362/625 kB | 254/264 kBProgress (3): 284 kB | 366/625 kB | 254/264 kBProgress (3): 284 kB | 370/625 kB | 254/264 kBProgress (3): 284 kB | 374/625 kB | 254/264 kBProgress (3): 284 kB | 379/625 kB | 254/264 kBProgress (3): 284 kB | 383/625 kB | 254/264 kBProgress (3): 284 kB | 387/625 kB | 254/264 kBProgress (3): 284 kB | 391/625 kB | 254/264 kBProgress (3): 284 kB | 395/625 kB | 254/264 kBProgress (3): 284 kB | 399/625 kB | 254/264 kBProgress (3): 284 kB | 403/625 kB | 254/264 kBProgress (3): 284 kB | 407/625 kB | 254/264 kBProgress (3): 284 kB | 411/625 kB | 254/264 kBProgress (3): 284 kB | 415/625 kB | 254/264 kBProgress (3): 284 kB | 420/625 kB | 254/264 kBProgress (3): 284 kB | 424/625 kB | 254/264 kBProgress (3): 284 kB | 428/625 kB | 254/264 kBProgress (3): 284 kB | 432/625 kB | 254/264 kBProgress (3): 284 kB | 436/625 kB | 254/264 kBProgress (3): 284 kB | 440/625 kB | 254/264 kBProgress (3): 284 kB | 444/625 kB | 254/264 kBProgress (3): 284 kB | 448/625 kB | 254/264 kBProgress (3): 284 kB | 452/625 kB | 254/264 kBProgress (3): 284 kB | 456/625 kB | 254/264 kBProgress (3): 284 kB | 460/625 kB | 254/264 kBProgress (3): 284 kB | 465/625 kB | 254/264 kBProgress (3): 284 kB | 469/625 kB | 254/264 kBProgress (3): 284 kB | 473/625 kB | 254/264 kBProgress (3): 284 kB | 477/625 kB | 254/264 kB                                              Downloaded from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar (284 kB at 433 kB/s)
+Progress (2): 481/625 kB | 254/264 kBProgress (2): 485/625 kB | 254/264 kBProgress (2): 489/625 kB | 254/264 kBProgress (2): 493/625 kB | 254/264 kBProgress (2): 497/625 kB | 254/264 kBProgress (2): 501/625 kB | 254/264 kBProgress (2): 506/625 kB | 254/264 kBProgress (2): 510/625 kB | 254/264 kBProgress (2): 514/625 kB | 254/264 kBProgress (2): 518/625 kB | 254/264 kBProgress (2): 522/625 kB | 254/264 kBProgress (2): 526/625 kB | 254/264 kBProgress (2): 530/625 kB | 254/264 kBProgress (2): 534/625 kB | 254/264 kBProgress (2): 538/625 kB | 254/264 kBProgress (2): 542/625 kB | 254/264 kBProgress (2): 546/625 kB | 254/264 kBProgress (2): 551/625 kB | 254/264 kBProgress (2): 555/625 kB | 254/264 kBProgress (2): 559/625 kB | 254/264 kBProgress (2): 563/625 kB | 254/264 kBProgress (2): 567/625 kB | 254/264 kBProgress (2): 571/625 kB | 254/264 kBProgress (2): 575/625 kB | 254/264 kBProgress (2): 579/625 kB | 254/264 kBProgress (2): 583/625 kB | 254/264 kBProgress (2): 587/625 kB | 254/264 kBProgress (2): 592/625 kB | 254/264 kBProgress (2): 596/625 kB | 254/264 kBProgress (2): 600/625 kB | 254/264 kBProgress (2): 604/625 kB | 254/264 kBProgress (2): 608/625 kB | 254/264 kBProgress (2): 612/625 kB | 254/264 kBProgress (2): 616/625 kB | 254/264 kBProgress (2): 620/625 kB | 254/264 kBProgress (2): 624/625 kB | 254/264 kBProgress (2): 625 kB | 254/264 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar (625 kB at 806 kB/s)
+Progress (1): 258/264 kBProgress (1): 262/264 kBProgress (1): 264 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar (264 kB at 289 kB/s)
+[[1;34mINFO[m] User cache: /home/mustapha/.sonar/cache
+[[1;34mINFO[m] SonarQube version: 25.11.0.114957
+[[1;34mINFO[m] Default locale: "en_US", source code encoding: "UTF-8"
+[[1;34mINFO[m] Load global settings
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  22.030 s
+[[1;34mINFO[m] Finished at: 2025-11-12T10:37:55+01:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar[m [1m(default-cli)[m on project [36msupplychain[m: [1;31mNot authorized. Analyzing this project requires authentication. Please check the user token in the property 'sonar.token' or 'sonar.login' (deprecated).[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
