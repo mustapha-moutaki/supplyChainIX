@@ -127,7 +127,7 @@ pipeline {
         stage('Clean') {
             steps {
                 echo '🧹 Cleaning old Docker containers/images (optional)...'
-                // يمكنك إضافة أوامر تنظيف هنا إذا أحببت
+
             }
         }
     }
