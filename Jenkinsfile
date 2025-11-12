@@ -94,7 +94,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo '⚙️ Building the application...'
-                // يمكنك تغيير -DskipTests إذا أردت تشغيل الاختبارات أثناء البناء
+
                 sh 'mvn clean package -DskipTests'
             }
         }
@@ -108,28 +108,28 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                echo '🐳 Building Docker image...'
+                echo ' Building Docker image...'
                 sh "docker build -t $IMAGE_NAME ."
             }
         }
 
-        stage('Docker Run') {
-            steps {
-                echo '▶️ Running Docker container...'
-                sh """
-                    docker stop $CONTAINER_NAME || true
-                    docker rm $CONTAINER_NAME || true
-                    docker run -d --name $CONTAINER_NAME -p 8080:8080 $IMAGE_NAME
-                """
-            }
-        }
-
-        stage('Clean') {
-            steps {
-                echo '🧹 Cleaning old Docker containers/images (optional)...'
-
-            }
-        }
+//         stage('Docker Run') {
+//             steps {
+//                 echo ' Running Docker container...'
+//                 sh """
+//                     docker stop $CONTAINER_NAME || true
+//                     docker rm $CONTAINER_NAME || true
+//                     docker run -d --name $CONTAINER_NAME -p 8080:8080 $IMAGE_NAME
+//                 """
+//             }
+//         }
+//
+//         stage('Clean') {
+//             steps {
+//                 echo '🧹 Cleaning old Docker containers/images (optional)...'
+//
+//             }
+//         }
     }
 
     post {
