@@ -5,16 +5,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.supplychain.supplychain.dto.supplier.SupplierDTO;
 import org.supplychain.supplychain.service.modelSupplier.SupplierService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 
@@ -24,6 +22,17 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * SupplierController Tests - Fixed Version
+ *
+ * Changes made:
+ *  Replaced deprecated @MockBean with @MockitoBean
+ *  Removed unused @SpringBootTest import
+ *  Removed unused Pageable import
+ *
+ * @MockitoBean is the new replacement for @MockBean since Spring Boot 3.4.0
+ * It works exactly the same way but is the modern recommended approach
+ */
 @WebMvcTest(SupplierController.class)
 @ActiveProfiles("test")
 class SupplierControllerTest {
@@ -31,7 +40,11 @@ class SupplierControllerTest {
     @Autowired
     private MockMvc mockMvc; // Used to simulate HTTP requests
 
-    @MockBean
+    /**
+     * FIXED: Using @MockitoBean instead of deprecated @MockBean
+     * @MockitoBean is the new annotation since Spring Boot 3.4.0
+     */
+    @MockitoBean
     private SupplierService supplierService; // Mock service for controller
 
     private SupplierDTO supplierDTO;
@@ -54,7 +67,6 @@ class SupplierControllerTest {
         // Mock service response with one fake supplier
         Page<SupplierDTO> pageSuppliers = new PageImpl<>(List.of(supplierDTO));
         when(supplierService.getAllSuppliers(anyInt(), anyInt())).thenReturn(pageSuppliers);
-
 
         // Send GET request to /api/suppliers?page=0&size=10
         mockMvc.perform(get("/api/suppliers")
