@@ -1,33 +1,83 @@
-spring:
-  application:
-    name: supplychain
+#spring:
+#  application:
+#    name: supplychain
+#
+#  datasource:
+#    url: jdbc:postgresql://postgres:5432/supplychainx_db
+#    username: supplychainx_user
+#    password: supplychainx_pass
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    open-in-view: false
+#
+#  liquibase:
+#    enabled: false
+#
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#server:
+#  port: 8080
+#
+#logging:
+#  level:
+#    root: INFO
+#    org.supplychain: DEBUG
 
+
+spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/supplychainx_db
-    username: supplychainx_user
-    password: supplychainx_pass
-    driver-class-name: org.postgresql.Driver
+    # إضافة MODE=PostgreSQL لتفعيل التوافق مع PostgreSQL
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
 
   jpa:
+    # استخدام H2Dialect بدلاً من PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        # تعطيل بعض الإعدادات التي قد تسبب مشاكل
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
     open-in-view: false
 
+  # تعطيل Liquibase في الاختبارات
   liquibase:
     enabled: false
 
-  main:
-    allow-bean-definition-overriding: true
+  # تعطيل SQL init scripts
+  sql:
+    init:
+      mode: never
 
-server:
-  port: 8080
+  security:
+    enabled: false
+
+# disabke h2 in tests
+  h2:
+    console:
+      enabled: false
 
 logging:
   level:
-    root: INFO
+    root: WARN
     org.supplychain: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
