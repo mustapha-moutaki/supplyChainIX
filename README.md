@@ -103,9 +103,11 @@ Directory structure:
     ├── README.md
     ├── docker-compose.yml
     ├── Dockerfile
+    ├── Jenkinsfile
     ├── mvnw
     ├── mvnw.cmd
     ├── pom.xml
+    ├── qodana.yaml
     ├── docker/
     │   └── README.md
     ├── docs/
@@ -143,7 +145,8 @@ Directory structure:
     │   │   │               │   │   ├── CustomerDto.java
     │   │   │               │   │   └── DeliveryDto.java
     │   │   │               │   ├── order/
-    │   │   │               │   │   └── OrderDTO.java
+    │   │   │               │   │   ├── OrderDTO.java
+    │   │   │               │   │   └── ProductOrderDTO.java
     │   │   │               │   ├── product/
     │   │   │               │   │   └── ProductDTO.java
     │   │   │               │   ├── productionorder/
@@ -188,7 +191,8 @@ Directory structure:
     │   │   │               │   └── Production/
     │   │   │               │       ├── BillOfMaterialMapper.java
     │   │   │               │       ├── ProductionOrderMapper.java
-    │   │   │               │       └── ProductMapper.java
+    │   │   │               │       ├── ProductMapper.java
+    │   │   │               │       └── ProductOrderMapper.java
     │   │   │               ├── model/
     │   │   │               │   ├── BaseEntity.java
     │   │   │               │   ├── BillOfMaterial.java
@@ -256,21 +260,32 @@ Directory structure:
     │   │               └── changes/
     │   │                   └── README.md
     │   └── test/
-    │       └── java/
-    │           └── org/
-    │               └── supplychain/
-    │                   └── supplychain/
-    │                       ├── SupplychainApplicationTests.java
-    │                       ├── controller/
-    │                       │   └── modelDelivery/
-    │                       │       └── CustomerControllerTest.java
-    │                       └── service/
-    │                           └── modelDelivery/
-    │                               └── impl/
-    │                                   └── CustomerServiceImplTest.java
+    │       ├── java/
+    │       │   └── org/
+    │       │       └── supplychain/
+    │       │           └── supplychain/
+    │       │               ├── SupplierRepositoryTest.java
+    │       │               ├── SupplychainApplicationTests.java
+    │       │               ├── controller/
+    │       │               │   └── approvisionnement/
+    │       │               │       └── SupplierControllerTest.java
+    │       │               ├── integration/
+    │       │               │   ├── OrderIntegrationTest.java
+    │       │               │   └── SupplierIntegrationTest.java
+    │       │               └── service/
+    │       │                   └── approvisionnement/
+    │       │                       └── impl/
+    │       │                           └── SupplierServiceImplTest.java
+    │       └── resources/
+    │           └── application-test.yml
+    ├── .github/
+    │   └── workflows/
+    │       ├── ci.yml
+    │       └── qodana_code_quality.yml
     └── .mvn/
         └── wrapper/
             └── maven-wrapper.properties
+
 
 ```
 
@@ -336,3 +351,159 @@ AI-based demand forecasting (bonus)
 
 ## Use-Case diagram
 ![Architecture Diagram](/UML/supply-chaine-UseCase.webp)
+
+# The Jenkinsfile 
+```
+
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        maven 'Maven 3.9.0'
+    }
+
+    environment {
+        IMAGE_NAME = "supplychainx-app"
+        CONTAINER_NAME = "supplychainx-container"
+        SPRING_PROFILES_ACTIVE = "test"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '-> Checking out the code...'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo '-> Building the application...'
+
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '-> Running unit & integration tests...'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                echo ' Building Docker image...'
+                sh "docker build -t $IMAGE_NAME ."
+            }
+        }
+
+        stage('Docker Run') {
+            steps {
+                echo ' Running Docker container...'
+                sh """
+                    docker stop $CONTAINER_NAME || true
+                    docker rm $CONTAINER_NAME || true
+                    docker run -d --name $CONTAINER_NAME -p 8080:8080 $IMAGE_NAME
+                """
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                echo '-> Cleaning old Docker containers/images (optional)...'
+
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '[success] Pipeline finished successfully!'
+        }
+        failure {
+            echo '[failed] Pipeline failed. Check logs!'
+        }
+    }
+}
+
+
+```
+
+# The GithubActions Pipline
+```
+name: CI Pipeline - Maven & Docker
+
+on:
+  push:
+    branches: [ "ImplTests" ]
+  pull_request:
+    branches: [ "ImplTests" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: 0
+        # 2️⃣ Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # 3️⃣ Build the project with Maven
+      - name: Build with Maven
+        run: mvn -B clean package --file pom.xml
+
+      # 4️⃣ Run tests with Maven and fail workflow if tests fail
+      - name: Run Maven tests
+        run: mvn test
+
+      # 5️⃣ Build Docker image locally
+      - name: Build Docker image
+        run: docker build -t supplychainx:latest .
+
+      # 6️⃣ Run Docker container locally
+      - name: Run Docker container
+        run: |
+          # Stop old container if exists
+          docker stop supplychainx-container || true
+          docker rm supplychainx-container || true
+          # Run container in detached mode
+          docker run -d --name supplychainx-container -p 8080:8080 supplychainx:latest
+
+      # 7️⃣ Optional: Clean up Docker container after workflow finishes
+      - name: Clean up Docker container
+        if: always()
+        run: |
+          docker stop supplychainx-container || true
+          docker rm supplychainx-container || true
+
+```
+
+
+
+
+
+
+
+## jenkins pipline
+![CICD](/cicd/jenkinsPipline.png)
+## github actions pipline
+![CICD](/cicd/githubActionPipline.png)
+## qodana jetbrains pipline
+![CICD](/cicd/githubActionJetbrainPipline.png)
+## github webhook
+![CICD](/cicd/githubWebhook.png)
+## jenkins console
+![CICD](/cicd/console.png)
+![CICD](/cicd/Screenshot%20from%202025-11-13%2019-57-53.png)
+## SonarQube -code Quality
+![CICD](/cicd/sonarQube.png)
