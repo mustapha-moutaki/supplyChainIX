@@ -21,7 +21,7 @@ public class OrderDTO {
 
     private Long customerId;
 
-    private List<Product> productOrders = new ArrayList<>();
+    private List<ProductOrderDTO> productOrders = new ArrayList<>();
 
 //    private BigDecimal totalAmount;
 

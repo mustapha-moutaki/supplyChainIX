@@ -5,8 +5,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.supplychain.supplychain.dto.order.OrderDTO;
+import org.supplychain.supplychain.dto.order.ProductOrderDTO;
+import org.supplychain.supplychain.enums.OrderStatus;
+import org.supplychain.supplychain.mapper.Production.ProductOrderMapper;
 import org.supplychain.supplychain.mapper.modelSupplier.OrderMapper;
+import org.supplychain.supplychain.model.Customer;
 import org.supplychain.supplychain.model.Order;
+import org.supplychain.supplychain.model.Product;
+import org.supplychain.supplychain.model.ProductOrder;
+import org.supplychain.supplychain.repository.Production.ProductRepository;
 import org.supplychain.supplychain.repository.approvisionnement.OrderRepository;
 import org.supplychain.supplychain.repository.modelDelivery.CustomerRepository;
 import org.supplychain.supplychain.service.modelSupplier.OrderServiec;
@@ -14,6 +21,7 @@ import org.supplychain.supplychain.service.modelSupplier.OrderServiec;
 
 import org.springframework.data.domain.Pageable;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,31 +31,66 @@ public class OrderServiceImpl implements OrderServiec {
 
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
-//    private final ProductOrderRepository productOrderRepository;
-
-    //    private final ProductOrderRepository productOrderRepository;
+    private final ProductOrderMapper productOrderMapper;
     private final OrderMapper orderMapper;
+    private final ProductRepository productRepository;
 
-    @Override
-    public OrderDTO createOrder(OrderDTO dto) {
+//    @Override
+//    public OrderDTO createOrder(OrderDTO dto) {
+//
+//        Order order = orderMapper.toEntity(dto);
+//
+//        // relate customer
+//        order.setCustomer(customerRepository.findById(dto.getCustomerId())
+//                .orElseThrow(() -> new RuntimeException("Client introuvable")));
+//
+//        // relate ProductOrders
+////       order.setProductOrders(productOrderRepository.findAllById(dto.getProductOrderIds()));
+//
+//        Order saved = orderRepository.save(order);
+//
+//        return orderMapper.toDto(saved);
+//    }
+public OrderDTO createOrder(OrderDTO dto) {
 
-        if (dto.getCustomerId() == null) {
-            throw new IllegalArgumentException("Customer must not be null");
+
+    Customer customer = customerRepository.findById(dto.getCustomerId())
+            .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+
+    Order order = orderMapper.toEntity(dto);
+    order.setCustomer(customer);
+    order.setStatus(dto.getStatus() != null ? dto.getStatus() : OrderStatus.EN_PREPARATION);
+    final Order finalOrder = order;
+    List<ProductOrder> productOrders = dto.getProductOrders().stream().map(poDTO -> {
+        Product product = productRepository.findById(poDTO.getProductId())
+                .orElseThrow(() -> new IllegalArgumentException("Product not found: " + poDTO.getProductId()));
+
+
+        if (product.getStock() < poDTO.getQuantity()) {
+            throw new IllegalArgumentException("Not enough stock for product: " + product.getName());
         }
 
-        Order order = orderMapper.toEntity(dto);
 
-        // relate customer
-        order.setCustomer(customerRepository.findById(dto.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Client introuvable")));
+        ProductOrder productOrder = productOrderMapper.toEntity(poDTO);
+        productOrder.setOrder(finalOrder);
+        productOrder.setProduct(product);
+        productOrder.setUnitPrice(product.getCost());
+        productOrder.setTotalPrice(product.getCost().multiply(BigDecimal.valueOf(poDTO.getQuantity())));
 
-        // relate ProductOrders
-//       order.setProductOrders(productOrderRepository.findAllById(dto.getProductOrderIds()));
 
-        Order saved = orderRepository.save(order);
+        product.setStock(product.getStock() - poDTO.getQuantity());
 
-        return orderMapper.toDto(saved);
-    }
+        return productOrder;
+    }).toList();
+
+
+    order.setProductOrders(productOrders);
+
+
+    order = orderRepository.save(order);
+
+    return orderMapper.toDto(order);
+}
 
     @Override
     public OrderDTO updateOrder(Long id, OrderDTO dto) {
