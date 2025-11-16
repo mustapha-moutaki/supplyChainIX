@@ -49,9 +49,7 @@ public class ProductServiceImplTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // ==========================================
-    //  TEST: createProduct Success
-    // ==========================================
+
     @Test
     void testCreateProduct_Success() {
 
@@ -94,9 +92,6 @@ public class ProductServiceImplTest {
         );
     }
 
-    // ==========================================
-    // TEST: createProduct Missing BOM
-    // ==========================================
     @Test
     void testCreateProduct_NoBOM() {
         ProductDTO dto = new ProductDTO();
@@ -108,9 +103,7 @@ public class ProductServiceImplTest {
         );
     }
 
-    // ==========================================
-    // TEST: updateProduct Product Not Found
-    // ==========================================
+
     @Test
     void testUpdateProduct_NotFound() {
 
@@ -121,9 +114,6 @@ public class ProductServiceImplTest {
         );
     }
 
-    // ==========================================
-    // TEST: deleteProduct Blocked by Orders
-    // ==========================================
     @Test
     void testDeleteProduct_InUseByOrders() {
 
@@ -138,9 +128,6 @@ public class ProductServiceImplTest {
         );
     }
 
-    // ==========================================
-    // TEST: getProductById Success
-    // ==========================================
     @Test
     void testGetProductById_Success() {
         Product product = new Product();
@@ -155,9 +142,7 @@ public class ProductServiceImplTest {
         assertEquals(dto, result);
     }
 
-    // ==========================================
-    // TEST: getProductById Not Found
-    // ==========================================
+
     @Test
     void testGetProductById_NotFound() {
 
