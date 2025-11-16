@@ -1,4 +1,4 @@
-package org.supplychain.supplychain.service.approvisionnement.impl;
+package org.supplychain.supplychain.unit.impl.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

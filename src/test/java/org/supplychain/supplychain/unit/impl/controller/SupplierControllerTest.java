@@ -1,4 +1,4 @@
-package org.supplychain.supplychain.controller.approvisionnement;
+package org.supplychain.supplychain.unit.impl.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.supplychain.supplychain.controller.approvisionnement.SupplierController;
 import org.supplychain.supplychain.dto.supplier.SupplierDTO;
 import org.supplychain.supplychain.service.modelSupplier.SupplierService;
 import org.springframework.data.domain.Page;
