@@ -32,52 +32,76 @@
 #    root: INFO
 #    org.supplychain: DEBUG
 
+#
+#spring:
+#  datasource:
+#
+#    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#
+#  jpa:
+#
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+#        temp:
+#          use_jdbc_metadata_defaults: false
+#    open-in-view: false
+#
+#
+#  liquibase:
+#    enabled: false
+#
+#
+#  sql:
+#    init:
+#      mode: never
+#
+#  security:
+#    enabled: false
+#
+## disabke h2 in tests
+#  h2:
+#    console:
+#      enabled: false
+#
+#logging:
+#  level:
+#    root: WARN
+#    org.supplychain: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 spring:
+  config:
+    activate:
+      on-profile: dev
+
   datasource:
-    # إضافة MODE=PostgreSQL لتفعيل التوافق مع PostgreSQL
-    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/supplychainx_db
+    username: supplychainx_user
+    password: supplychainx_pass
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    # استخدام H2Dialect بدلاً من PostgreSQLDialect
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
-        # تعطيل بعض الإعدادات التي قد تسبب مشاكل
-        jdbc:
-          lob:
-            non_contextual_creation: true
-        temp:
-          use_jdbc_metadata_defaults: false
-    open-in-view: false
-
-  # تعطيل Liquibase في الاختبارات
-  liquibase:
-    enabled: false
-
-  # تعطيل SQL init scripts
-  sql:
-    init:
-      mode: never
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   security:
-    enabled: false
-
-# disabke h2 in tests
-  h2:
-    console:
-      enabled: false
-
-logging:
-  level:
-    root: WARN
-    org.supplychain: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    user:
+      name: user
+      password: 12345
