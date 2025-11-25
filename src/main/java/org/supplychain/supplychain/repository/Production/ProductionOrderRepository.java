@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.supplychain.supplychain.enums.ProductionOrderStatus;
 import org.supplychain.supplychain.model.ProductionOrder;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,7 +16,6 @@ public interface ProductionOrderRepository extends JpaRepository<ProductionOrder
 
 
     boolean existsByOrderNumber(String orderNumber);
-
 
     Optional<ProductionOrder> findByOrderNumber(String orderNumber);
 
