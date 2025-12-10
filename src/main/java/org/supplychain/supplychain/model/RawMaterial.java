@@ -41,6 +41,9 @@ public class RawMaterial extends BaseEntity {
     @Column(nullable = false)
     private BigDecimal unitPrice;
 
+    @Column(nullable = false)
+    private String unit;
+
     private LocalDate lastRestockDate;
 
     @ManyToMany

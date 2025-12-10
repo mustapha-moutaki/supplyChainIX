@@ -30,8 +30,10 @@ public class RawMaterialRequestDTO {
     @Min(value = 0, message = "Minimum stock cannot be negative")
     private Integer stockMin;
 
-//    @NotBlank(message = "Unit is required")
-//    @Size(min = 1, max = 50, message = "Unit must be between 1 and 50 characters")
+    @NotBlank(message = "Unit is required")
+    @Size(min = 1, max = 50, message = "Unit must be between 1 and 50 characters")
+    private String unit;
+
 @NotNull(message = "Unit price is required")
 @DecimalMin(value = "0.0", inclusive = false, message = "Unit price must be greater than 0")
         private String unitPrice;

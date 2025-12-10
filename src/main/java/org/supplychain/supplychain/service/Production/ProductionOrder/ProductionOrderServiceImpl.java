@@ -73,7 +73,7 @@ public class ProductionOrderServiceImpl implements ProductionOrderService {
         }
 
         if (dto.getProductId() != null &&
-                !dto.getProductId().equals(existingOrder.getProduct().getIdProduct())) {
+                !dto.getProductId().equals(existingOrder.getProduct().getId())) {
 
             Product newProduct = productRepository.findById(dto.getProductId())
                     .orElseThrow(() -> new ResourceNotFoundException(

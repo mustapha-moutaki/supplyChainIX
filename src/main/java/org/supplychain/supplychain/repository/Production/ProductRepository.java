@@ -18,17 +18,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByName(String name);
 
 
-    boolean existsByNameAndIdProductNot(String name, Long idProduct);
+    boolean existsByNameAndIdNot(String name, Long idProduct);
 
-    @Query("SELECT COUNT(po) FROM ProductionOrder po WHERE po.product.idProduct = :productId")
+    @Query("SELECT COUNT(po) FROM ProductionOrder po WHERE po.product.id = :productId")
     Long countProductionOrdersByProductId(@Param("productId") Long productId);
 
 
-    @Query("SELECT COUNT(po) FROM ProductionOrder po WHERE po.product.idProduct = :productId AND po.status = :status")
+    @Query("SELECT COUNT(po) FROM ProductionOrder po WHERE po.product.id = :productId AND po.status = :status")
     Long countProductionOrdersByProductIdAndStatus(@Param("productId") Long productId, @Param("status") ProductionOrderStatus status);
 
 
-    @Query("SELECT COUNT(op) FROM ProductOrder op JOIN op.order o WHERE op.product.idProduct = :productId AND o.status = :status")
+    @Query("SELECT COUNT(op) FROM ProductOrder op JOIN op.order o WHERE op.product.id = :productId AND o.status = :status")
     Long countOrdersByProductIdAndStatus(@Param("productId") Long productId, @Param("status") OrderStatus status);
 
 

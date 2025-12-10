@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 )
 public interface ProductMapper {
 
-    @Mapping(target = "idProduct", ignore = true)
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "billOfMaterials", ignore = true)
     @Mapping(target = "productionOrders", ignore = true)
     @Mapping(target = "productOrders", ignore = true)
@@ -35,7 +35,7 @@ public interface ProductMapper {
     ProductDTO toDTO(Product product);
 
 
-    @Mapping(target = "idProduct", ignore = true)
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "billOfMaterials", ignore = true)
     @Mapping(target = "productionOrders", ignore = true)
     @Mapping(target = "productOrders", ignore = true)

@@ -31,6 +31,8 @@ public class RawMaterialResponseDTO {
 
     private BigDecimal unitPrice;
 
+    private String unit;
+
     private Boolean isCriticalStock;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

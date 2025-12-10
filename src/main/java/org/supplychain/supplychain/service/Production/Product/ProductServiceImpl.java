@@ -78,14 +78,14 @@ public class ProductServiceImpl implements ProductService {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Produit non trouvé avec l'ID : " + id));
 
-        if (productRepository.existsByNameAndIdProductNot(productDTO.getName(), id)) {
+        if (productRepository.existsByNameAndIdNot(productDTO.getName(), id)) {
             throw new DuplicateResourceException("Un autre produit avec le nom '" + productDTO.getName() + "' existe déjà");
         }
 
         productMapper.updateEntityFromDTO(productDTO, existingProduct);
 
         if (productDTO.getBillOfMaterials() != null && !productDTO.getBillOfMaterials().isEmpty()) {
-            bomRepository.deleteByProduct_IdProduct(id);
+            bomRepository.deleteByProductId(id);
             bomRepository.flush();
 
             List<BillOfMaterial> bomList = new ArrayList<>();
