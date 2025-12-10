@@ -1,10 +1,7 @@
 package org.supplychain.supplychain.dto.rawmaterial;
 
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +32,11 @@ public class RawMaterialRequestDTO {
 
     @NotBlank(message = "Unit is required")
     @Size(min = 1, max = 50, message = "Unit must be between 1 and 50 characters")
-        private String unit;
+    private String unit;
+
+@NotNull(message = "Unit price is required")
+@DecimalMin(value = "0.0", inclusive = false, message = "Unit price must be greater than 0")
+        private String unitPrice;
 
     private LocalDate lastRestockDate;
 

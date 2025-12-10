@@ -24,4 +24,6 @@ public interface ProductionOrderService {
 
 
     ProductionOrderDTO getProductionOrderById(Long id);
+
+    ProductionOrderDTO production(Long id);
 }

@@ -12,10 +12,15 @@ import org.supplychain.supplychain.exception.DuplicateResourceException;
 import org.supplychain.supplychain.exception.ResourceInUseException;
 import org.supplychain.supplychain.exception.ResourceNotFoundException;
 import org.supplychain.supplychain.mapper.Production.ProductionOrderMapper;
+import org.supplychain.supplychain.model.BillOfMaterial;
 import org.supplychain.supplychain.model.Product;
 import org.supplychain.supplychain.model.ProductionOrder;
+import org.supplychain.supplychain.model.RawMaterial;
 import org.supplychain.supplychain.repository.Production.ProductRepository;
 import org.supplychain.supplychain.repository.Production.ProductionOrderRepository;
+
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -68,7 +73,7 @@ public class ProductionOrderServiceImpl implements ProductionOrderService {
         }
 
         if (dto.getProductId() != null &&
-                !dto.getProductId().equals(existingOrder.getProduct().getIdProduct())) {
+                !dto.getProductId().equals(existingOrder.getProduct().getId())) {
 
             Product newProduct = productRepository.findById(dto.getProductId())
                     .orElseThrow(() -> new ResourceNotFoundException(
@@ -127,4 +132,24 @@ public class ProductionOrderServiceImpl implements ProductionOrderService {
 
         return productionOrderMapper.toDTO(order);
     }
+
+    @Override
+    public ProductionOrderDTO production(Long id) {
+        ProductionOrder order = productionOrderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Ordre de production non trouvé avec l'ID : " + id));
+
+        List<BillOfMaterial>billOfMaterials =  order.getProduct().getBillOfMaterials();
+        billOfMaterials.stream().forEach(billOfMaterial -> {
+            if( billOfMaterial.getQuantity() * order.getQuantity() > billOfMaterial.getMaterial().getStock()){
+                throw new RuntimeException("the quatity is not enough");
+            }
+            billOfMaterial.getMaterial().setStock(billOfMaterial.getMaterial().getStock() - order.getQuantity());
+
+        });
+        order.setStatus(ProductionOrderStatus.EN_PRODUCTION);
+
+        return  productionOrderMapper.toDTO(order);
+    }
+
 }

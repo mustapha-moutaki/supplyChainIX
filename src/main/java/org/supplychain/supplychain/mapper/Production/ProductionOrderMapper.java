@@ -18,7 +18,7 @@ public interface ProductionOrderMapper {
     @Mapping(target = "updatedBy", ignore = true)
     ProductionOrder toEntity(ProductionOrderDTO dto);
 
-    @Mapping(source = "product.idProduct", target = "productId")
+    @Mapping(source = "product.id", target = "productId")
     @Mapping(source = "product.name", target = "productName")
     ProductionOrderDTO toDTO(ProductionOrder entity);
 

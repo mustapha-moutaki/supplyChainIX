@@ -1,0 +1,52 @@
+name: CI Pipeline - Maven & Docker
+
+on:
+  push:
+    branches: [ "ImplTests" ]
+  pull_request:
+    branches: [ "ImplTests" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: 0
+        # 2️⃣ Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # 3️⃣ Build the project with Maven
+      - name: Build with Maven
+        run: mvn -B clean package --file pom.xml
+
+      # 4️⃣ Run tests with Maven and fail workflow if tests fail
+      - name: Run Maven tests
+        run: mvn test
+
+      # 5️⃣ Build Docker image locally
+      - name: Build Docker image
+        run: docker build -t supplychainx:latest .
+
+      # 6️⃣ Run Docker container locally
+      - name: Run Docker container
+        run: |
+          # Stop old container if exists
+          docker stop supplychainx-container || true
+          docker rm supplychainx-container || true
+          # Run container in detached mode
+          docker run -d --name supplychainx-container -p 8080:8080 supplychainx:latest
+
+      # 7️⃣ Optional: Clean up Docker container after workflow finishes
+      - name: Clean up Docker container
+        if: always()
+        run: |
+          docker stop supplychainx-container || true
+          docker rm supplychainx-container || true

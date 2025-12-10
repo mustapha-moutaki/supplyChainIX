@@ -97,4 +97,10 @@ public Page<SupplierDTO> getAllSuppliers(int page, int size) {
                 .map(supplierMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public SupplierDTO getSupplierById(Long id) {
+        Supplier supplier =  supplierRepository.findById(id).orElseThrow(()-> new RuntimeException("Supplier not found"));
+        return supplierMapper.toDTO(supplier);
+    }
 }

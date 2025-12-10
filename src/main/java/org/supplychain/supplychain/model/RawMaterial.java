@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.supplychain.supplychain.model.BaseEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,9 @@ public class RawMaterial extends BaseEntity {
 
     @Column(nullable = false)
     private Integer stockMin;
+
+    @Column(nullable = false)
+    private BigDecimal unitPrice;
 
     @Column(nullable = false)
     private String unit;

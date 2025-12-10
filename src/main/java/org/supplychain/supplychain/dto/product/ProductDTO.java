@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-    private Long idProduct;
+    private Long id;
 
     @NotNull(message = "Le nom du produit est obligatoire")
     private String name;
