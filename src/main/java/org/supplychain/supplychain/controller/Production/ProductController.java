@@ -1,6 +1,10 @@
 package org.supplychain.supplychain.controller.Production;
 
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +26,12 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @Operation(summary = "Create a new product")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Product created successfully",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request data")
+    })
     @PostMapping
     public ResponseEntity<SuccessResponse<ProductDTO>> createProduct(
             @Valid @RequestBody ProductDTO productDTO,
@@ -30,13 +40,14 @@ public class ProductController {
         ProductDTO createdProduct = productService.createProduct(productDTO);
         SuccessResponse<ProductDTO> response = SuccessResponse.of(
                 HttpStatus.CREATED,
-                "Produit créé avec succès",
+                "Product created successfully",
                 createdProduct,
                 request.getRequestURI()
         );
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Update a product by ID")
     @PutMapping("/{id}")
     public ResponseEntity<SuccessResponse<ProductDTO>> updateProduct(
             @PathVariable Long id,
@@ -46,13 +57,14 @@ public class ProductController {
         ProductDTO updatedProduct = productService.updateProduct(id, productDTO);
         SuccessResponse<ProductDTO> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Produit mis à jour avec succès",
+                "Product updated successfully",
                 updatedProduct,
                 request.getRequestURI()
         );
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Delete a product by ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<SuccessResponse<Void>> deleteProduct(
             @PathVariable Long id,
@@ -61,13 +73,14 @@ public class ProductController {
         productService.deleteProduct(id);
         SuccessResponse<Void> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Produit supprimé avec succès",
+                "Product deleted successfully",
                 null,
                 request.getRequestURI()
         );
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Get a product by ID")
     @GetMapping("/{id}")
     public ResponseEntity<SuccessResponse<ProductDTO>> getProductById(
             @PathVariable Long id,
@@ -76,13 +89,14 @@ public class ProductController {
         ProductDTO product = productService.getProductById(id);
         SuccessResponse<ProductDTO> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Produit récupéré avec succès",
+                "Product retrieved successfully",
                 product,
                 request.getRequestURI()
         );
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Get all products with pagination and sorting")
     @GetMapping
     public ResponseEntity<SuccessResponse<Page<ProductDTO>>> getAllProducts(
             @RequestParam(defaultValue = "0") int page,
@@ -100,7 +114,7 @@ public class ProductController {
 
         SuccessResponse<Page<ProductDTO>> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Liste des produits récupérée avec succès",
+                "Products list retrieved successfully",
                 products,
                 request.getRequestURI()
         );

@@ -13,7 +13,6 @@ import org.supplychain.supplychain.dto.modelDelivery.CustomerDto;
 import org.supplychain.supplychain.response.SuccessResponse;
 import org.supplychain.supplychain.service.modelDelivery.interfaces.ICustomerService;
 import org.springframework.data.domain.Page;
-
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
@@ -23,15 +22,13 @@ public class CustomerController {
 
     private final ICustomerService customerService;
 
-    @Operation(summary = "Créer un nouveau client")
+    @Operation(summary = "Create a new customer")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Client créé avec succès",
+            @ApiResponse(responseCode = "201", description = "Customer created successfully",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = CustomerDto.class))),
-            @ApiResponse(responseCode = "409", description = "Email déjà utilisé")
+            @ApiResponse(responseCode = "409", description = "Email already exists")
     })
-
-
     @PostMapping
     public ResponseEntity<SuccessResponse<CustomerDto>> createCustomer(
             @RequestBody CustomerDto dto,
@@ -41,7 +38,7 @@ public class CustomerController {
 
         SuccessResponse<CustomerDto> response = SuccessResponse.of(
                 HttpStatus.CREATED,
-                "Client créé avec succès",
+                "Customer created successfully",
                 createdCustomer,
                 request.getRequestURI()
         );
@@ -49,10 +46,7 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-
-
-
-    @Operation(summary = "Récupérer la liste des clients avec pagination et filtre")
+    @Operation(summary = "Retrieve all customers with pagination and optional filter")
     @GetMapping
     public ResponseEntity<SuccessResponse<Page<CustomerDto>>> getAllCustomers(
             @RequestParam(defaultValue = "0") int page,
@@ -64,7 +58,7 @@ public class CustomerController {
 
         SuccessResponse<Page<CustomerDto>> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Liste des clients récupérée avec succès",
+                "Customers retrieved successfully",
                 customers,
                 request.getRequestURI()
         );
@@ -72,7 +66,7 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Récupérer un client par son ID....")
+    @Operation(summary = "Retrieve a customer by ID")
     @GetMapping("/{id}")
     public ResponseEntity<SuccessResponse<CustomerDto>> getCustomerById(
             @PathVariable Long id,
@@ -82,7 +76,7 @@ public class CustomerController {
 
         SuccessResponse<CustomerDto> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Client récupéré avec succès....",
+                "Customer retrieved successfully",
                 customer,
                 request.getRequestURI()
         );
@@ -90,7 +84,7 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Mettre à jour un client par son ID...")
+    @Operation(summary = "Update a customer by ID")
     @PutMapping("/{id}")
     public ResponseEntity<SuccessResponse<CustomerDto>> updateCustomer(
             @PathVariable Long id,
@@ -101,7 +95,7 @@ public class CustomerController {
 
         SuccessResponse<CustomerDto> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Client mis à jour avec succès....",
+                "Customer updated successfully",
                 updatedCustomer,
                 request.getRequestURI()
         );
@@ -109,7 +103,7 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Supprimer un client par son ID.....")
+    @Operation(summary = "Delete a customer by ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<SuccessResponse<Void>> deleteCustomer(
             @PathVariable Long id,
@@ -119,7 +113,7 @@ public class CustomerController {
 
         SuccessResponse<Void> response = SuccessResponse.of(
                 HttpStatus.OK,
-                "Client supprimé avec succès.....",
+                "Customer deleted successfully",
                 null,
                 request.getRequestURI()
         );
