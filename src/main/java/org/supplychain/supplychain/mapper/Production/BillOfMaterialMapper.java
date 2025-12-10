@@ -12,6 +12,6 @@ public interface BillOfMaterialMapper {
 
     @Mapping(source = "material.idMaterial", target = "materialId")
     @Mapping(source = "material.name", target = "materialName")
-    @Mapping(source = "material.unit", target = "materialUnit")
+    @Mapping(source = "material.unitPrice", target = "materialUnit")
     BillOfMaterialDTO toDTO(BillOfMaterial bom);
 }
