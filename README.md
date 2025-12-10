@@ -307,6 +307,109 @@ pgAdmin: http://localhost:5050
 
 Swagger UI: http://localhost:8080/swagger-ui.html
 
+## [  Fast SupplyChain API Documentation ]
+
+## Raw Materials API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/raw-materials/{id}` | Get a raw material by ID |
+| PUT | `/api/raw-materials/{id}` | Update a raw material by ID |
+| DELETE | `/api/raw-materials/{id}` | Delete a raw material by ID |
+| GET | `/api/raw-materials` | Get all raw materials |
+| POST | `/api/raw-materials` | Create a new raw material |
+| GET | `/api/raw-materials/{id}/is-used` | Check if a raw material is used in any product |
+| GET | `/api/raw-materials/search` | Search raw materials by name |
+| GET | `/api/raw-materials/critical-stock` | Get raw materials with critical stock |
+| GET | `/api/raw-materials/critical-stock/paginated` | Get raw materials with critical stock (paginated) |
+
+---
+
+## Orders API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/orders/{id}` | Get an order by ID |
+| PUT | `/api/orders/{id}` | Update an order by ID |
+| DELETE | `/api/orders/{id}` | Delete an order by ID |
+| GET | `/api/orders` | Get all orders |
+| POST | `/api/orders` | Create a new order |
+
+---
+
+## Suppliers API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/suppliers/{id}` | Get a supplier by ID |
+| PUT | `/api/suppliers/{id}` | Update an existing supplier by ID |
+| DELETE | `/api/suppliers/{id}` | Delete a supplier by ID |
+| GET | `/api/suppliers` | Get all suppliers with pagination |
+| POST | `/api/suppliers` | Create a new supplier |
+| GET | `/api/suppliers/search` | Search suppliers by name |
+
+---
+
+## Supplier Orders API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/supplier-orders/{id}` | Get a supplier order by ID |
+| PUT | `/api/supplier-orders/{id}` | Update a supplier order |
+| DELETE | `/api/supplier-orders/{id}` | Delete a supplier order |
+| GET | `/api/supplier-orders` | Get all supplier orders |
+| POST | `/api/supplier-orders` | Create a new supplier order |
+
+---
+
+## Products API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products/{id}` | Get a product by ID |
+| PUT | `/api/products/{id}` | Update a product by ID |
+| DELETE | `/api/products/{id}` | Delete a product by ID |
+| GET | `/api/products` | Get all products with pagination and sorting |
+| POST | `/api/products` | Create a new product |
+
+---
+
+## Production Orders API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production-orders/{id}` | Get a production order by ID |
+| PUT | `/api/production-orders/{id}` | Update a production order by ID |
+| DELETE | `/api/production-orders/{id}` | Cancel a production order by ID |
+| PUT | `/api/production-orders/production/{id}` | Start production for a given production order by ID |
+| GET | `/api/production-orders` | Get all production orders with pagination and sorting |
+| POST | `/api/production-orders` | Create a new production order |
+| GET | `/api/production-orders/status/{status}` | Get production orders filtered by status with pagination |
+
+---
+
+## Deliveries API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/deliveries/{id}` | Retrieve a delivery by ID |
+| PUT | `/api/deliveries/{id}` | Update a delivery by ID |
+| DELETE | `/api/deliveries/{id}` | Delete a delivery by ID |
+| GET | `/api/deliveries` | Retrieve all deliveries |
+| POST | `/api/deliveries` | Create a new delivery |
+
+---
+
+## Customers API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/customers/{id}` | Retrieve a customer by ID |
+| PUT | `/api/customers/{id}` | Update a customer by ID |
+| DELETE | `/api/customers/{id}` | Delete a customer by ID |
+| GET | `/api/customers` | Retrieve all customers with pagination and optional filter |
+| POST | `/api/customers` | Create a new customer |
+
 ## 🧾 Example User Stories
 
 Procurement
