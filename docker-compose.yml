@@ -49,15 +49,15 @@ services:
       timeout: 5s
       retries: 3
       start_period: 150s
-#---------------------addition
-#  Jenkins:
-#    image: jenkins/jenkins:lts
-#    container_name: supply_Jenkins
-#    ports:
-#      - "9090:8080" # jenkins works in port 9090
-#      - "50000:50000"
-#    volumes:
-#      - cicd_jenkins_home:/var/jenkins_home
+  #---------------------addition
+  #  Jenkins:
+  #    image: jenkins/jenkins:lts
+  #    container_name: supply_Jenkins
+  #    ports:
+  #      - "9090:8080" # jenkins works in port 9090
+  #      - "50000:50000"
+  #    volumes:
+  #      - cicd_jenkins_home:/var/jenkins_home
   #      - jenkins_home:/var/jenkins_home --> we are gonna to use the same old jenkins container
   #  ---------------
   pgadmin:
@@ -77,12 +77,87 @@ services:
     networks:
       - supplychainx-network
 
+
+  # ---------------------------------------------------
+  # ELK STACK ADDITION
+  # ---------------------------------------------------
+
+  # 1. ELASTICSEARCH - The Database
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+      # Ensure this file exists on your host, or comment this line out to use defaults
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+    networks:
+      - supplychainx-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200 >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # 2. LOGSTASH - The Pipeline
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.11.1
+    container_name: logstash
+    environment:
+      - LS_JAVA_OPTS=-Xmx256m -Xms256m
+    volumes:
+      # Ensure these files/folders exist on your host
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5000:5000"
+      - "5000:5000/udp"
+      - "9600:9600"
+    networks:
+      - supplychainx-network
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  # 3. KIBANA - The Dashboard
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.1
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    volumes:
+      # Ensure this file exists on your host, or comment this line out to use defaults
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+    ports:
+      - "5601:5601"
+    networks:
+      - supplychainx-network
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+
+
 volumes:
   postgres_data:
     driver: local
   pgadmin_data:
     driver: local
   jenkins_home:
+    driver: local
+  elasticsearch-data:
     driver: local
 
 networks:
