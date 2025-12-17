@@ -69,6 +69,7 @@ Manage customers, sales orders, and deliveries.
 
 ---
 
+
 ## 👥 User Roles
 
 | Module | Roles |
