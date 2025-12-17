@@ -2,6 +2,7 @@ package org.supplychain.supplychain.mapper.modelSupplier;
 
 import org.mapstruct.*;
 import org.supplychain.supplychain.dto.order.OrderDTO;
+import org.supplychain.supplychain.mapper.Production.ProductOrderMapper;
 import org.supplychain.supplychain.model.Order;
 
 @Mapper(
