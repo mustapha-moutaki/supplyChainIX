@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+  # ---------------------------------------------------
+  # DATABASE
+  # ---------------------------------------------------
   postgres:
     image: postgres:16-alpine
     container_name: supplychainx-postgres
@@ -9,11 +12,10 @@ services:
       POSTGRES_DB: supplychainx_db
       POSTGRES_USER: supplychainx_user
       POSTGRES_PASSWORD: supplychainx_pass
-      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data     # Persist DB
     networks:
       - supplychainx-network
     healthcheck:
@@ -21,12 +23,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 10s
 
+  # ---------------------------------------------------
+  # SPRING BOOT APP
+  # ---------------------------------------------------
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: supplychainx-app
     restart: unless-stopped
     ports:
@@ -36,129 +38,106 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/supplychainx_db
       SPRING_DATASOURCE_USERNAME: supplychainx_user
       SPRING_DATASOURCE_PASSWORD: supplychainx_pass
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_LIQUIBASE_ENABLED: true
+    labels:
+      - "co.elastic.logs/enabled=true"              # Enable Filebeat
     depends_on:
       postgres:
         condition: service_healthy
     networks:
       - supplychainx-network
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 150s
-  #---------------------addition
-  #  Jenkins:
-  #    image: jenkins/jenkins:lts
-  #    container_name: supply_Jenkins
-  #    ports:
-  #      - "9090:8080" # jenkins works in port 9090
-  #      - "50000:50000"
-  #    volumes:
-  #      - cicd_jenkins_home:/var/jenkins_home
-  #      - jenkins_home:/var/jenkins_home --> we are gonna to use the same old jenkins container
-  #  ---------------
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: supplychainx-pgadmin
-    restart: unless-stopped
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@supplychainx.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    ports:
-      - "5050:80"
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin
-    depends_on:
-      - postgres
-    networks:
-      - supplychainx-network
-
 
   # ---------------------------------------------------
-  # ELK STACK ADDITION
+  # ELASTICSEARCH
   # ---------------------------------------------------
-
-  # 1. ELASTICSEARCH - The Database
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+#    container_name: elasticsearch
+#    environment:
+#      - discovery.type=single-node                 # Dev mode
+#      - xpack.security.enabled=false
+#      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+#    ports:
+#      - "9200:9200"
+#    volumes:
+#      - elasticsearch-data:/usr/share/elasticsearch/data
+#    networks:
+#      - supplychainx-network
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
     container_name: elasticsearch
     environment:
-      - node.name=elasticsearch
-      - cluster.name=es-docker-cluster
       - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  # قلل الذاكرة
+      - bootstrap.memory_lock=true
     ulimits:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-      # Ensure this file exists on your host, or comment this line out to use defaults
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
       - "9200:9200"
     networks:
       - supplychainx-network
     healthcheck:
-      test: ["CMD-SHELL", "curl -s http://localhost:9200 >/dev/null || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:9200 || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 5
 
-  # 2. LOGSTASH - The Pipeline
+  # ---------------------------------------------------
+  # LOGSTASH
+  # ---------------------------------------------------
   logstash:
     image: docker.elastic.co/logstash/logstash:8.11.1
     container_name: logstash
-    environment:
-      - LS_JAVA_OPTS=-Xmx256m -Xms256m
     volumes:
-      # Ensure these files/folders exist on your host
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro   # Root file
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     ports:
       - "5000:5000"
-      - "5000:5000/udp"
       - "9600:9600"
     networks:
       - supplychainx-network
     depends_on:
-      elasticsearch:
-        condition: service_healthy
+      - elasticsearch
 
-  # 3. KIBANA - The Dashboard
+  # ---------------------------------------------------
+  # KIBANA
+  # ---------------------------------------------------
   kibana:
     image: docker.elastic.co/kibana/kibana:8.11.1
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    volumes:
-      # Ensure this file exists on your host, or comment this line out to use defaults
-      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
     ports:
       - "5601:5601"
     networks:
       - supplychainx-network
     depends_on:
-      elasticsearch:
-        condition: service_healthy
+      - elasticsearch
 
+  # ---------------------------------------------------
+  # FILEBEAT
+  # ---------------------------------------------------
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.11.1
+    container_name: filebeat
+    user: root
+    # ADD "-e" HERE. This enables logging to the console.
+    command: [ "-e", "--strict.perms=false" ]
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - logstash
+    networks:
+      - supplychainx-network
 
 
 volumes:
   postgres_data:
-    driver: local
-  pgadmin_data:
-    driver: local
-  jenkins_home:
-    driver: local
   elasticsearch-data:
-    driver: local
 
 networks:
   supplychainx-network:

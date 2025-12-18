@@ -1,0 +1,2 @@
+http.host: "0.0.0.0"     #Enable monitoring API
+xpack.monitoring.enabled: false
