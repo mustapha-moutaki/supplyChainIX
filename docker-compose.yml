@@ -68,7 +68,7 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  # قلل الذاكرة
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - bootstrap.memory_lock=true
     ulimits:
       memlock:
@@ -122,10 +122,17 @@ services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:8.11.1
     container_name: filebeat
-    user: root
-    # ADD "-e" HERE. This enables logging to the console.
-    command: [ "-e", "--strict.perms=false" ]
+    user: root # neccessery for reading form  /var/lib/docker
+  # we tell filebeat we use a custome file
+    command:
+      - -e
+      - --strict.perms=false
+      - -c
+      - /usr/share/filebeat/filebeat.yml
+    environment:
+      - DOCKER_API_VERSION=1.44
     volumes:
+
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -133,6 +140,20 @@ services:
       - logstash
     networks:
       - supplychainx-network
+#  filebeat:
+#    image: docker.elastic.co/beats/filebeat:8.11.1
+#    container_name: filebeat
+#    user: root
+#    # ADD "-e" HERE. This enables logging to the console.
+#    command: [ "-e", "--strict.perms=false" ]
+#    volumes:
+#      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+#      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+#    depends_on:
+#      - logstash
+#    networks:
+#      - supplychainx-network
 
 
 volumes:

@@ -1,5 +1,13 @@
 logging:
+ # disable writing because we use docker envirement
+  # file:
+  #   name: ./logs/supplychainx.log
+  
   level:
     root: INFO
+    org.supplychain: DEBUG # to follow app details
+
   pattern:
-    console: '{"@timestamp":"%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}", "level":"%p", "logger":"%c", "message":"%m"}'
+    # Important: tell the consoles to print json manually
+
+    console: '{"@timestamp":"%d{yyyy-MM-dd''T''HH:mm:ss.SSSZ}", "level":"%p", "logger":"%c", "service":"supplychainx", "message":"%m"}%n'
