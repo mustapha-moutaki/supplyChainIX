@@ -38,30 +38,34 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/supplychainx_db
       SPRING_DATASOURCE_USERNAME: supplychainx_user
       SPRING_DATASOURCE_PASSWORD: supplychainx_pass
+      #important
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: http://keycloak:8080/realms/springboot/protocol/openid-connect/certs
     labels:
-      - "co.elastic.logs/enabled=true"              # Enable Filebeat
+      - "co.elastic.logs/enabled=true"
     depends_on:
       postgres:
         condition: service_healthy
+      keycloak:
+        condition: service_started
     networks:
       - supplychainx-network
 
   # ---------------------------------------------------
   # ELASTICSEARCH
   # ---------------------------------------------------
-#  elasticsearch:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
-#    container_name: elasticsearch
-#    environment:
-#      - discovery.type=single-node                 # Dev mode
-#      - xpack.security.enabled=false
-#      - ES_JAVA_OPTS=-Xms512m -Xmx512m
-#    ports:
-#      - "9200:9200"
-#    volumes:
-#      - elasticsearch-data:/usr/share/elasticsearch/data
-#    networks:
-#      - supplychainx-network
+  #  elasticsearch:
+  #    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+  #    container_name: elasticsearch
+  #    environment:
+  #      - discovery.type=single-node                 # Dev mode
+  #      - xpack.security.enabled=false
+  #      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+  #    ports:
+  #      - "9200:9200"
+  #    volumes:
+  #      - elasticsearch-data:/usr/share/elasticsearch/data
+  #    networks:
+  #      - supplychainx-network
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
     container_name: elasticsearch
@@ -123,7 +127,7 @@ services:
     image: docker.elastic.co/beats/filebeat:8.11.1
     container_name: filebeat
     user: root # neccessery for reading form  /var/lib/docker
-  # we tell filebeat we use a custome file
+    # we tell filebeat we use a custome file
     command:
       - -e
       - --strict.perms=false
@@ -140,25 +144,29 @@ services:
       - logstash
     networks:
       - supplychainx-network
-#  filebeat:
-#    image: docker.elastic.co/beats/filebeat:8.11.1
-#    container_name: filebeat
-#    user: root
-#    # ADD "-e" HERE. This enables logging to the console.
-#    command: [ "-e", "--strict.perms=false" ]
-#    volumes:
-#      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-#      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-#      - /var/run/docker.sock:/var/run/docker.sock:ro
-#    depends_on:
-#      - logstash
-#    networks:
-#      - supplychainx-network
+  #  filebeat:
+  #    image: docker.elastic.co/beats/filebeat:8.11.1
+  #    container_name: filebeat
+  #    user: root
+  #    # ADD "-e" HERE. This enables logging to the console.
+  #    command: [ "-e", "--strict.perms=false" ]
+  #    volumes:
+  #      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+  #      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #      - /var/run/docker.sock:/var/run/docker.sock:ro
+  #    depends_on:
+  #      - logstash
+  #    networks:
+  #      - supplychainx-network
   keycloak:
     image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HOSTNAME_STRICT: "false"
+      KC_HOSTNAME_URL: http://localhost:8081
+      KC_HTTP_ENABLED: "true"
     command: start-dev
     ports:
       - "8081:8080"

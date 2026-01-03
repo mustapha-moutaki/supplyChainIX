@@ -1,90 +1,82 @@
 package org.supplychain.supplychain.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-
+/**
+ * PURPOSE:
+ * This is the "Security Guard" of the application. It defines the global security
+ * rules, such as which URLs are public, which require roles, and how to validate
+ * the incoming Keycloak JWT tokens.
+ *
+ * HOW IT WORKS:
+ * It configures Spring Security to act as an OAuth2 Resource Server. This means
+ * the app won't have its own login page; instead, it expects a "Bearer Token"
+ * in the header of every request.
+ */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // Enables Spring Security's web support
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
-    // Note: Removed JwtAuthenticationFilter and AuthenticationProvider to stop the JJWT error
+    // Our custom converter that extracts roles (like ADMIN) from the Keycloak token
+    private final JwtConverter jwtConverter;
 
+    // The URL of the Keycloak server used to fetch public keys to verify token signatures
+    @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    private String jwkSetUri;
+
+    /**
+     * The SecurityFilterChain defines the "checkpoints" for every HTTP request.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                // Disable CSRF because we are using JWT tokens (Stateless), not Cookies
                 .csrf(AbstractHttpConfigurer::disable)
+
+                // Set session policy to STATELESS: Spring won't create or use HTTP sessions (no cookies)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
                 .authorizeHttpRequests(req -> req
-                        // ---------- AUTH & SWAGGER (PUBLIC) ----------
-                        .requestMatchers(
-                                "/api/auth/**",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).permitAll()
+                        // PUBLIC: Allow anyone to access Auth, Swagger documentation, and UI
+                        .requestMatchers("/api/auth/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 
-                        // ---------- APPROVISIONNEMENT ----------
-                        .requestMatchers("/api/suppliers/**").hasAnyRole("ADMIN", "GESTIONNAIRE_APPROVISIONNEMENT", "RESPONSABLE_ACHATS", "SUPERVISEUR_LOGISTIQUE")
-                        .requestMatchers("/api/raw-materials/**").hasAnyRole("ADMIN", "GESTIONNAIRE_APPROVISIONNEMENT", "SUPERVISEUR_LOGISTIQUE")
-                        .requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "RESPONSABLE_ACHATS", "SUPERVISEUR_LOGISTIQUE")
+                        // PROTECTED: Role-Based Access Control (RBAC)
+                        // Note: .hasAnyRole automatically looks for the "ROLE_" prefix in the authorities
+                        .requestMatchers("/api/suppliers/**").hasAnyRole("ADMIN", "GESTIONNAIRE_APPROVISIONNEMENT")
+                        .requestMatchers("/api/products/**").hasAnyRole("ADMIN", "CHEF_PRODUCTION")
 
-                        // ---------- PRODUCTION ----------
-                        .requestMatchers("/api/products/**").hasAnyRole("ADMIN", "CHEF_PRODUCTION", "SUPERVISEUR_PRODUCTION")
-                        .requestMatchers("/api/production-orders/**").hasAnyRole("ADMIN", "CHEF_PRODUCTION", "PLANIFICATEUR", "SUPERVISEUR_PRODUCTION")
-
-                        // ---------- DELIVERY ----------
-                        .requestMatchers("/api/customers/**").hasAnyRole("ADMIN", "GESTIONNAIRE_COMMERCIAL")
-                        .requestMatchers("/api/deliveries/**").hasAnyRole("ADMIN", "RESPONSABLE_LOGISTIQUE", "SUPERVISEUR_LIVRAISONS")
-                        .requestMatchers("/api/supplier-orders/**").hasAnyRole("ADMIN", "RESPONSABLE_ACHATS")
-
+                        // SECURE BY DEFAULT: Any other request not mentioned above must be authenticated
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                // This replaces your manual JwtAuthenticationFilter
+
+                // Configure the app to behave as an OAuth2 Resource Server
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
+                        // Use our custom jwtConverter to transform JWT claims into Spring Authorities
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtConverter))
                 );
 
         return http.build();
     }
 
+    /**
+     * The JwtDecoder is responsible for checking if the token is valid.
+     * It fetches the Public Keys from Keycloak using the jwkSetUri.
+     */
     @Bean
     public JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withJwkSetUri(
-                "http://localhost:8081/realms/springboot/protocol/openid-connect/certs"
-        ).build();
-    }
-
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            Map<String, Object> realmAccess = jwt.getClaim("realm_access");
-            if (realmAccess == null || realmAccess.get("roles") == null) {
-                return Collections.emptyList();
-            }
-            Collection<String> roles = (Collection<String>) realmAccess.get("roles");
-            return roles.stream()
-                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role)) // MUST have ROLE_ prefix
-                    .collect(Collectors.toList());
-        });
-        return converter;
+        // NimbusJwtDecoder is the standard implementation.
+        // withJwkSetUri tells it where to find the keys to verify the RS256 signature.
+        return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).build();
     }
 }
