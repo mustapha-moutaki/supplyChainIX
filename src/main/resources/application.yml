@@ -43,6 +43,23 @@ logging:
     org.springframework.security: DEBUG
     org.supplychain: DEBUG
 
+security:
+  oauth2:
+    client:
+      registration:
+        keycloak:
+          client-id: springboot-client
+          scope:
+            - openid
+            - profile
+            - email
+          authorization-grant-type: authorization_code
+          redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
+
+      provider:
+        keycloak:
+          issuer-uri: http://localhost:8081/realms/springboot
+          user-name-attribute: preferred_username
 # ======================
 # SERVER ERROR HANDLING
 # ======================
