@@ -1,6 +1,9 @@
 package org.supplychain.supplychain.controller.auth;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +14,8 @@ import org.supplychain.supplychain.dto.Auth.AuthenticationResponse;
 import org.supplychain.supplychain.dto.Auth.RefreshTokenRequest;
 import org.supplychain.supplychain.dto.Auth.RegisterRequest;
 import org.supplychain.supplychain.service.jwtAuth.AuthenticationService;
+
+import java.time.Duration;
 
 
 @RestController
@@ -29,9 +34,30 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
+            @RequestBody AuthenticationRequest request,
+            HttpServletResponse response
     ) {
-        return ResponseEntity.ok(service.authenticate(request));
+        AuthenticationResponse authResponse = service.authenticate(request);
+
+        ResponseCookie refreshCookie = ResponseCookie
+                .from("refreshToken", authResponse.getRefreshToken())
+                .httpOnly(true)
+                .secure(false) // true in production warning asi mustapha hh
+                .path("/api/auth/refresh-token")
+                .sameSite("Lax") // strict / lax for localhsot
+                .maxAge(Duration.ofDays(7))
+                .build();
+
+        response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
+
+      // we shouldn't return refresh token but for testing and educt porpose
+        return ResponseEntity.ok(
+                AuthenticationResponse.builder()
+                        .accessToken(authResponse.getAccessToken())
+                        .refreshToken(authResponse.getRefreshToken()) // testing only
+                        .role(authResponse.getRole())
+                        .build()
+        );
     }
 
     @PostMapping("/refresh-token")
