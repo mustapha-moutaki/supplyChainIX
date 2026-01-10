@@ -66,4 +66,26 @@ public class AuthController {
     ) {
         return ResponseEntity.ok(service.refreshToken(request.getToken()));
     }
+
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletResponse response) {
+
+        // Create a cookie with the same name "refreshToken" but with an empty value
+        // maxAge = 0 means the cookie will be deleted immediately in the browser
+        ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
+                .httpOnly(true)             // Prevent JavaScript from accessing the cookie
+                .secure(false)              // false for localhost, true in production (HTTPS)
+                .path("/api/auth/refresh-token") // Must match the path used when creating the cookie
+                .sameSite("Lax")            // Same SameSite attribute as the original cookie
+                .maxAge(0)                  // Delete the cookie immediately
+                .build();
+
+        // Add the deleted cookie to the response header
+        response.addHeader(HttpHeaders.SET_COOKIE, deleteCookie.toString());
+
+        // Return HTTP 204 No Content → logout successful
+        return ResponseEntity.noContent().build();
+    }
+
 }

@@ -17,15 +17,14 @@ public class CorsConfig {
 
         // allow localhost:4200
         config.setAllowedOriginPatterns(List.of("http://localhost:4200"));
-
+        config.setAllowCredentials(true);
         // allow all HTTP methods
         config.setAllowedMethods(List.of("*"));
 
         // allow all headers
         config.setAllowedHeaders(List.of("*"));
 
-        // JWT (no cookies)
-        config.setAllowCredentials(false);
+
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
