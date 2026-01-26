@@ -17,3 +17,4 @@ public interface CustomerMapper {
     @Mapping(source = "id", target = "idCustomer")
     Customer toEntity(CustomerDto customerDto);
 }
+
