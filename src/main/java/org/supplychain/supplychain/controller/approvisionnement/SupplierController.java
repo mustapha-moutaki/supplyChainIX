@@ -44,19 +44,38 @@ public class SupplierController {
         }
     }
 
-    @Operation(summary = "Get all suppliers with pagination")
-    @GetMapping
-    public ResponseEntity<Page<SupplierDTO>> getAllSuppliers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size) {
-        return ResponseEntity.ok(supplierService.getAllSuppliers(page, size));
+//    @Operation(summary = "Get all suppliers with pagination")
+//    @GetMapping
+//    public ResponseEntity<Page<SupplierDTO>> getAllSuppliers(
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "5") int size) {
+//        return ResponseEntity.ok(supplierService.getAllSuppliers(page, size));
+//    }
+//
+//    @Operation(summary = "Search suppliers by name")
+//    @GetMapping
+//    public ResponseEntity<List<SupplierDTO>> searchSupplier(@RequestParam String name) {
+//        return ResponseEntity.ok(supplierService.searchSupplierByName(name));
+//    }
+@Operation(summary = "Get all suppliers, optionally filtered by name, with pagination")
+@GetMapping
+public ResponseEntity<Page<SupplierDTO>> getSuppliers(
+        @RequestParam(required = false) String name,      // for seaching optional
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "5") int size) {
+
+    Page<SupplierDTO> suppliers;
+
+    if (name != null && !name.isEmpty()) {
+        // name eist we search
+        suppliers = supplierService.searchSupplierByName(name, page, size); // pagination
+    } else {
+        // return all
+        suppliers = supplierService.getAllSuppliers(page, size);
     }
 
-    @Operation(summary = "Search suppliers by name")
-    @GetMapping("/search")
-    public ResponseEntity<List<SupplierDTO>> searchSupplier(@RequestParam String name) {
-        return ResponseEntity.ok(supplierService.searchSupplierByName(name));
-    }
+    return ResponseEntity.ok(suppliers);
+}
 
     @Operation(summary = "Get a supplier by ID")
     @GetMapping("/{id}")
